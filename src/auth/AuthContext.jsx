@@ -149,6 +149,31 @@ export function AuthProvider({ children }) {
     }
   };
 
+  async function register({ username, password, role, inviteCode }) {
+    setError(null);
+    try {
+      await axios.post(`${API_BASE}/api/auth/register`, {
+        username, password, role, inviteCode
+      }, {
+        headers: { "Content-Type": "application/json" }
+      });
+
+      // Automatically login after successful registration
+      const u = await login({ username, password, role });
+      return u;
+    } catch (err) {
+      // Log, then surface error
+      if (err.response) {
+        console.error("Register error:", err.response.status, err.response.data);
+        setError(err.response.data.error || "Registration failed");
+      } else {
+        console.error("Register error:", err.message);
+        setError("Registration failed");
+      }
+      throw err;
+    }
+  }
+
   // Refresh token pair
   const refreshTokens = async () => {
     if (!refreshTokenRef.current) throw new Error("No refresh token");
@@ -194,6 +219,7 @@ export function AuthProvider({ children }) {
         refreshToken,
         login,
         logout,
+        register,
         loading,
         error,
         authAxios, // use this for any protected API calls
