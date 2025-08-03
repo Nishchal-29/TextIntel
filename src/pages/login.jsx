@@ -203,6 +203,15 @@ export default function Login() {
               </Col>
             ))}
           </Row>
+          <div className="text-center mt-4">
+            <Button
+              variant="outline-light"
+              size="sm"
+              onClick={() => navigate("/register")}
+            >
+              Register
+            </Button>
+          </div>
         </Container>
 
         {/* CSS STYLES */}
