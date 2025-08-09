@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Container, Row, Col, Card, Form, Button, Alert, Spinner } from "react-bootstrap";
 import { ShieldLock, PersonFill, AwardFill } from "react-bootstrap-icons";
+import { useAuth } from "../auth/AuthContext";
 
 const roles = [
   {
@@ -23,16 +24,57 @@ const roles = [
 
 export default function Login() {
   const [flippedRole, setFlippedRole] = useState("");
+  const [credentials, setCredentials] = useState({
+    User: { username: "", password: "" },
+    Commander: { username: "", password: "" },
+    Admin: { username: "", password: "" },
+  });
+  const [localError, setLocalError] = useState({});
   const navigate = useNavigate();
+  const location = useLocation();
+  const { login, loading, error: globalError } = useAuth();
 
-  const handleLogin = (role) => {
-    navigate(`/${role.toLowerCase()}`);
+  const handleFlipToggle = (role) => {
+    setFlippedRole((prev) => (prev === role ? "" : role));
+  };
+
+  const handleChange = (role, field, value) => {
+    setCredentials((prev) => ({
+      ...prev,
+      [role]: { ...prev[role], [field]: value },
+    }));
+    setLocalError((prev) => ({ ...prev, [role]: null }));
+  };
+
+  const submitLogin = async (role) => {
+    const { username, password } = credentials[role];
+    if (!username || !password) {
+      setLocalError((prev) => ({ ...prev, [role]: "Username and password required" }));
+      return;
+    }
+    try {
+      await login({ username, password, role });
+      const from = location.state?.from?.pathname || `/${role.toLowerCase()}`;
+      navigate(from, { replace: true });
+    } catch (e) {
+      setLocalError((prev) => ({
+        ...prev,
+        [role]: e.response?.data?.error || "Login failed",
+      }));
+    }
+  };
+
+  const handleFlipKey = (e, role) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleFlipToggle(role);
+    }
   };
 
   return (
     <>
       <div className="login-bg text-white py-5">
-        <div className="radar-overlay"></div>
+        <div className="radar-overlay" />
         <Container className="text-white py-5 position-relative" style={{ zIndex: 2 }}>
           <h1 className="text-center mb-4 text-success fw-bold">🛡️ TEXTINTEL Login Portal</h1>
           <p className="text-center text-secondary mb-5 fs-5">
@@ -43,47 +85,133 @@ export default function Login() {
               <Col key={role} md={4} className="mb-4 d-flex justify-content-center">
                 <div
                   className={`flip-card ${flippedRole === role ? "flipped" : ""}`}
-                  onClick={() => setFlippedRole(flippedRole === role ? "" : role)}
+                  tabIndex={0}
+                  aria-label={`${role} login card`}
+                  style={{ outline: "none" }}
+                  {...(flippedRole !== role && {
+                    onClick: () => handleFlipToggle(role),
+                    onKeyDown: (e) => handleFlipKey(e, role),
+                  })}
                 >
                   <div className="flip-card-inner">
+                    {/* Front Side */}
                     <Card className="flip-card-front glossy-card text-center p-4 text-white">
                       <div className="mb-2 fs-2">{icon}</div>
                       <Card.Title className="fs-4 fw-bold text-glow">{role} Login</Card.Title>
                       <Card.Text className="gradient-text small">{desc}</Card.Text>
-                      <div className="mt-2 text-info">Click to Login</div>
+                      <div
+                        className="mt-2 text-info"
+                        role="button"
+                        tabIndex={0}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleFlipToggle(role);
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            handleFlipToggle(role);
+                          }
+                        }}
+                      >
+                        Click to Login
+                      </div>
                     </Card>
 
+                    {/* Back Side */}
                     <Card className="flip-card-back glossy-card text-white p-4">
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 8,
+                          right: 12,
+                          fontSize: 18,
+                          cursor: "pointer",
+                          fontWeight: "bold",
+                        }}
+                        aria-label="Close"
+                        role="button"
+                        tabIndex={0}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setFlippedRole("");
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setFlippedRole("");
+                          }
+                        }}
+                      >
+                        ×
+                      </div>
+
                       <Card.Title className="text-center text-warning fw-bold">{role} Login</Card.Title>
-                      <Form className="mt-3">
-                        <Form.Group controlId={`username-${role}`}>
+                      <Form
+                        className="mt-3"
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          submitLogin(role);
+                        }}
+                      >
+                        {localError[role] && (
+                          <Alert variant="danger" className="py-1">
+                            {localError[role]}
+                          </Alert>
+                        )}
+                        <Form.Group controlId={`username-${role}`} className="mb-2">
                           <Form.Control
                             type="text"
                             placeholder="Username"
+                            aria-label="Username"
+                            value={credentials[role].username}
+                            onChange={(e) => handleChange(role, "username", e.target.value)}
                             className="mb-3 rounded-pill text-center"
                           />
                         </Form.Group>
-                        <Form.Group controlId={`password-${role}`}>
+                        <Form.Group controlId={`password-${role}`} className="mb-2">
                           <Form.Control
                             type="password"
                             placeholder="Password"
+                            aria-label="Password"
+                            value={credentials[role].password}
+                            onChange={(e) => handleChange(role, "password", e.target.value)}
                             className="mb-3 rounded-pill text-center"
                           />
                         </Form.Group>
                         <Button
                           variant="success"
                           className="w-100 fw-semibold rounded-pill"
-                          onClick={() => handleLogin(role)}
+                          type="submit"
+                          disabled={loading}
                         >
-                          Access Portal
+                          {loading ? (
+                            <>
+                              <Spinner as="span" animation="border" size="sm" /> Signing in...
+                            </>
+                          ) : (
+                            "Access Portal"
+                          )}
                         </Button>
                       </Form>
+                      {globalError && (
+                        <div className="mt-2 text-danger small text-center">{globalError}</div>
+                      )}
                     </Card>
                   </div>
                 </div>
               </Col>
             ))}
           </Row>
+          <div className="text-center mt-4">
+            <Button
+              variant="outline-light"
+              size="sm"
+              onClick={() => navigate("/register")}
+            >
+              Register
+            </Button>
+          </div>
         </Container>
 
         {/* CSS STYLES */}
@@ -130,14 +258,13 @@ export default function Login() {
             width: 320px;
             height: 320px;
             perspective: 1000px;
-            cursor: pointer;
           }
 
           .flip-card-inner {
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.8s ease;
+            transition: transform 0.5s ease;
             transform-style: preserve-3d;
           }
 
@@ -147,15 +274,14 @@ export default function Login() {
 
           .flip-card-front,
           .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
             backface-visibility: hidden;
             border-radius: 1rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+            position: absolute;
+            width: 100%;
+            height: 100%;
           }
 
           .flip-card-back {
@@ -171,7 +297,8 @@ export default function Login() {
             transition: transform 0.3s, box-shadow 0.3s;
           }
 
-          .glossy-card:hover {
+          /* Hover only when not flipped */
+          .flip-card:not(.flipped) .glossy-card:hover {
             transform: scale(1.03);
             box-shadow:
               0 0 30px rgba(0, 255, 100, 0.5),
@@ -188,6 +315,10 @@ export default function Login() {
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
+          }
+
+          .flip-card:focus-visible {
+            outline: 3px solid #00ffcc;
           }
         `}</style>
       </div>
