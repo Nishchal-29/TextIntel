@@ -21,11 +21,11 @@ MAX_NUM_WORDS = 10000
 EMBEDDING_DIM = 100
 
 # DB Connection from environment variables
-DB_HOST = os.environ.get("DB_HOST", "localhost")
-DB_PORT = os.environ.get("DB_PORT", "5432")
-DB_NAME = os.environ.get("DB_NAME", "textintel")
-DB_USER = os.environ.get("DB_USER", "nishchal")
-DB_PASS = os.environ.get("DB_PASS", "textintel")
+DB_HOST = os.environ.get("DB_HOST")
+DB_PORT = os.environ.get("DB_PORT")
+DB_NAME = os.environ.get("DB_NAME")
+DB_USER = os.environ.get("DB_USER")
+DB_PASS = os.environ.get("DB_PASS")
 
 # Label mapping
 LABELS = {"benign": 0, "suspicious": 1, "critical": 2}
