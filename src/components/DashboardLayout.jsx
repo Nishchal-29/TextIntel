@@ -15,7 +15,7 @@ export default function DashboardLayout({ title, children }) {
   return (
     <div className="d-flex" style={{ minHeight: "100vh" }}>
       {/* Sidebar */}
-      <div
+      {/* <div
         className="bg-dark text-white p-3"
         style={{ width: 260, flexShrink: 0, display: "flex", flexDirection: "column" }}
       >
@@ -55,7 +55,7 @@ export default function DashboardLayout({ title, children }) {
             Logout
           </button>
         </div>
-      </div>
+      </div> */}
 
       {/* Main content */}
       <div className="flex-grow-1 bg-light">
