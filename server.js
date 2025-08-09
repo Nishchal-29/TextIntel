@@ -106,7 +106,7 @@ function authorize(allowedRoles = []) {
 // === RATE LIMITERS ===
 const loginLimiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutes
-  max: 5,
+  max: 10,
   standardHeaders: true,
   legacyHeaders: false,
   handler: (req, res) => {
@@ -369,6 +369,251 @@ app.get("/api/protected/commander", authorize(["commander", "admin"]), (req, res
 app.get("/api/protected/admin", authorize(["admin"]), (req, res) => {
   res.json({ msg: "Hello admin-level", user: req.user });
 });
+
+// === USER: STORE CLASSIFIED MESSAGE ===
+app.post("/api/messages", authenticate, async (req, res) => {
+  const { text, classification, confidence } = req.body;
+
+  if (!text || !classification) {
+    return res.status(400).json({ error: "Text and classification are required" });
+  }
+
+  if (!["benign", "suspicious", "critical"].includes(classification)) {
+    return res.status(400).json({ error: "Invalid classification" });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO classified_messages (user_id, text, classification, confidence)
+       VALUES ($1, $2, $3, $4)
+       RETURNING *`,
+      [req.user.sub, text, classification, confidence || null]
+    );
+
+    // Log in audit_logs
+    await pool.query(
+      `INSERT INTO audit_logs (user_id, username, action, metadata, success, ip)
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [
+        req.user.sub,
+        req.user.username,
+        "classify_message",
+        JSON.stringify({ message_id: result.rows[0].id, classification }),
+        true,
+        req.ip
+      ]
+    );
+
+    res.json({ message: result.rows[0] });
+  } catch (err) {
+    console.error("Error saving classified message:", err);
+    res.status(500).json({ error: "Failed to save classified message" });
+  }
+});
+
+app.get("/api/messages/user", authenticate, async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT cm.id, cm.text, cm.classification, cm.created_at
+       FROM classified_messages cm
+       WHERE cm.user_id = $1
+       ORDER BY cm.created_at DESC`,
+      [req.user.sub]
+    );
+
+    // Log this action in audit_logs
+    await pool.query(
+      `INSERT INTO audit_logs (user_id, username, action, metadata, success, ip)
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [
+        req.user.sub,
+        req.user.username,
+        "fetch_user_messages",
+        JSON.stringify({ count: result.rows.length }),
+        true,
+        req.ip
+      ]
+    );
+
+    res.json({ messages: result.rows });
+  } catch (err) {
+    console.error("Error fetching user messages:", err);
+    res.status(500).json({ error: "Failed to fetch messages" });
+  }
+});
+
+// === ADMIN: USER MANAGEMENT ===
+app.get("/api/admin/users", authenticate, authorize(["admin"]), async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT id, username, role, created_at
+       FROM users
+       ORDER BY username ASC`
+    );
+    res.json({ users: result.rows });
+  } catch (err) {
+    console.error("Error fetching users:", err);
+    res.status(500).json({ error: "Failed to fetch users" });
+  }
+});
+
+app.patch("/api/admin/users/:id/role", authenticate, authorize(["admin"]), async (req, res) => {
+  const { id } = req.params;
+  const { role } = req.body;
+
+  if (!["user", "commander", "admin"].includes(role)) {
+    return res.status(400).json({ error: "Invalid role" });
+  }
+
+  try {
+    const result = await pool.query(
+      `UPDATE users
+       SET role = $1
+       WHERE id = $2
+       RETURNING id, username, role`,
+      [role, id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Optional: log this in audit logs
+    await pool.query(
+      `INSERT INTO audit_logs (user_id, username, action, metadata, success, ip)
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [
+        req.user.sub,
+        req.user.username,
+        "role_changed",
+        JSON.stringify({ target_user_id: id, new_role: role }),
+        true,
+        req.ip
+      ]
+    );
+
+    res.json({ user: result.rows[0] });
+  } catch (err) {
+    console.error("Error updating user role:", err);
+    res.status(500).json({ error: "Failed to update role" });
+  }
+});
+
+// === ADMIN: CLASSIFIED MESSAGES MANAGEMENT ===
+app.get("/api/admin/messages", authenticate, authorize(["admin"]), async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT m.*, u.username FROM classified_messages m LEFT JOIN users u ON m.user_id = u.id ORDER BY m.created_at DESC`
+    );
+    res.json({ messages: result.rows });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: "Failed to fetch messages" });
+  }
+});
+
+// Update a classified message (text/classification)
+app.patch("/api/admin/messages/:id", authenticate, authorize(["admin"]), async (req, res) => {
+  const { id } = req.params;
+  const { text, classification } = req.body;
+
+  if (!["benign", "suspicious", "critical"].includes(classification)) {
+    return res.status(400).json({ error: "Invalid classification" });
+  }
+
+  try {
+    const result = await pool.query(
+      `UPDATE classified_messages
+       SET text = $1,
+           classification = $2,
+           updated_at = NOW()
+       WHERE id = $3
+       RETURNING *`,
+      [text, classification, id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Message not found" });
+    }
+
+    // Log this action in audit_logs
+    await pool.query(
+      `INSERT INTO audit_logs (user_id, username, action, metadata, success, ip)
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [
+        req.user.sub,
+        req.user.username,
+        "update_classified_message",
+        JSON.stringify({ message_id: id, new_classification: classification }),
+        true,
+        req.ip
+      ]
+    );
+
+    res.json({ message: result.rows[0] });
+  } catch (err) {
+    console.error("Error updating classified message:", err);
+    res.status(500).json({ error: "Failed to update classified message" });
+  }
+});
+
+// Delete a classified message
+app.delete("/api/admin/messages/:id", authenticate, authorize(["admin"]), async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await pool.query(
+      `DELETE FROM classified_messages
+       WHERE id = $1
+       RETURNING *`,
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Message not found" });
+    }
+
+    // Log this action
+    await pool.query(
+      `INSERT INTO audit_logs (user_id, username, action, metadata, success, ip)
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [
+        req.user.sub,
+        req.user.username,
+        "delete_classified_message",
+        JSON.stringify({ message_id: id }),
+        true,
+        req.ip
+      ]
+    );
+
+    res.json({ message: result.rows[0] });
+  } catch (err) {
+    console.error("Error deleting classified message:", err);
+    res.status(500).json({ error: "Failed to delete classified message" });
+  }
+});
+
+// === ADMIN: AUDIT LOGS ===
+app.get("/api/audit-logs", authenticate, authorize(["admin"]), async (req, res) => {
+  const limit = parseInt(req.query.limit, 10) || 20;
+
+  try {
+    const result = await pool.query(
+      `SELECT id, user_id, username, action, metadata, success, ip, created_at
+       FROM audit_logs
+       ORDER BY created_at DESC
+       LIMIT $1`,
+      [limit]
+    );
+
+    res.json({ logs: result.rows });
+  } catch (err) {
+    console.error("Error fetching audit logs:", err);
+    res.status(500).json({ error: "Failed to fetch audit logs" });
+  }
+});
+
 
 // === SERVER START ===
 const PORT = process.env.PORT || 4000;
