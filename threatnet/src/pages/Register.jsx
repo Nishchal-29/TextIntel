@@ -61,7 +61,7 @@ export default function Register() {
     }
   };
 
-  const availableInviteCodes = ["RED-CVT-123", "ADM-ROVER", "CMDR-EXCEL"]; // demo
+  const availableInviteCodes = ["hack"]; 
   const isElite = (role) => ["commander", "admin"].includes(role);
 
   return (
@@ -125,7 +125,7 @@ export default function Register() {
                   <Form.Group className="mb-3">
                     <Form.Control
                       type="text"
-                      placeholder="Invite Code (e.g. RED-CVT-123)"
+                      placeholder="Invite Code"
                       value={form.inviteCode}
                       onChange={(e) =>
                         setForm({ ...form, inviteCode: e.target.value })
