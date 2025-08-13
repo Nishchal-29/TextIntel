@@ -1,71 +1,129 @@
+# 🛡️ NLP-Based Threat Classification & Intelligence Dashboard
 
-# NLP-Based Threat Classification & Intelligence Dashboard
+## 📌 Problem Statement
+Defense analysts and security agencies receive vast amounts of communication data (messages, reports, transcripts) daily.  
+Manually analyzing them for threats is slow, error-prone, and limited by human capacity — especially in **multilingual environments** (English, Hindi, Hinglish).  
+We need an **AI-powered, secure, multi-role platform** that:
+- Automatically classifies threats.
+- Extracts key entities.
+- Allows analysts, commanders, and admins to perform their roles efficiently.
+- Continuously improves through user feedback.
 
-## 📌 Overview
-This project is a **secure, multilingual NLP-based threat detection system** designed for defense analysts to classify text communications into risk categories, extract critical entities, and assist in decision-making.  
-The system integrates **machine learning, named entity recognition (NER), and an interactive dashboard** with role-based access for different users.
+---
+
+## 💡 Solution Overview
+We developed a **secure, multilingual NLP-based threat intelligence system** with:
+- **Machine Learning models** for threat classification.
+- **Named Entity Recognition (NER)** for detecting people, locations, weapons, and time references.
+- **PDF analysis** for uploaded intelligence reports.
+- **Three role-specific portals** (User, Commander, Admin).
+- **One-click model retraining** using user feedback.
 
 ---
 
 ## 🚀 Features
 
-### 1. NLP-Based Threat Classification
-- Classifies documents, messages, or transcripts into **Benign**, **Suspicious**, or **Critical**.
-- Uses **supervised learning** with keyword/entity detection for high accuracy.
-- Real-time predictions via the integrated ML model.
+### 🔹 Threat Classification
+- Classifies inputs into:
+  - Benign
+  - Suspicious
+  - Critical
+- Combines supervised ML with rule-based entity detection.
 
-### 2. Named Entity Recognition (NER)
-- Detects and highlights:
-  - **People**
-  - **Locations**
-  - **Weapons**
-  - **Dates & Time**
-- Helps human analysts quickly spot relevant information.
+### 🔹 Named Entity Recognition
+- Detects:
+  - People
+  - Locations
+  - Weapons
+  - Dates & Times
+- Displays entities in a **highlighted format**.
 
-### 3. PDF Analysis & Extraction
-- Upload PDF files containing intelligence reports or transcripts.
-- **Automatic text extraction** from PDFs.
-- Supports classification and entity recognition directly from PDF content.
+### 🔹 PDF Analysis
+- Upload PDF intelligence reports.
+- Extracts text automatically.
+- Runs classification & NER on extracted content.
 
-### 4. Interactive Dashboard
-- Secure web-based interface for uploading text or PDFs.
-- Displays:
-  - Classification results with **visual alerts**.
-  - Extracted entities.
-  - Historical logs for past intelligence reports.
-- Provides **search and filter** options for past threat data.
+### 🔹 Multi-Role Portals
+#### **User Portal**
+- Uploads text/PDF for classification.
+- Views results and entities.
+- Gives feedback on classification accuracy.
 
-### 5. Role-Based Access Control (RBAC)
-- **Analyst**: Can upload inputs, view analysis, and provide feedback.
-- **Commander**: Can view aggregated intelligence and approve or reject flagged reports.
-- Access restrictions for classified data.
+#### **Commander Portal**
+- Views all reports.
+- Monitors **which user searched for what**.
+- Cannot retrain the model.
 
-### 6. Model Feedback Loop
-- Analysts can mark **false positives** or **reclassify** threats.
-- Feedback is stored for retraining the model and improving accuracy.
+#### **Admin Portal**
+- Monitors all user activity.
+- Retrains the ML model with a **single click** using collected feedback.
+- Manages datasets and system settings.
+- Access to security and audit logs.
 
-### 7. Multilingual & Code-Mixed Support
-- Supports **English**, **Hindi**, and **Hinglish** (code-mixed text).
-- Uses **multilingual embeddings** or transformer-based models.
+### 🔹 Model Feedback Loop
+- Feedback from users is stored.
+- Admin retrains model instantly for better accuracy.
 
-### 8. Data Storage & Search
-- All classified reports are stored in a database (**PostgreSQL / MongoDB Atlas**).
-- Indexed for **fast lookup** and similarity search using vector embeddings.
+### 🔹 Multilingual & Code-Mixed Support
+- Handles English, Hindi, and Hinglish seamlessly.
+- Uses multilingual embeddings.
+
+### 🔹 Search & Data Storage
+- Stores all reports in **PostgreSQL / MongoDB Atlas**.
+- Supports vector similarity search for related past threats.
+- Tracks search history with **user attribution**.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Component | Technology |
-|-----------|------------|
+| Layer | Technology |
+|-------|------------|
 | **Frontend** | React.js, Bootstrap, React Router, react-hook-form, Axios |
 | **Backend** | FastAPI (Python), Node.js |
-| **ML/NLP** | TensorFlow / PyTorch, spaCy, Transformers (Hugging Face) |
+| **ML/NLP** | TensorFlow / PyTorch, spaCy, Hugging Face Transformers |
 | **Database** | PostgreSQL, MongoDB Atlas |
-| **Authentication** | JWT-based auth, Google Login |
-| **PDF Processing** | PyMuPDF / pdfplumber |
-| **Search** | Vector similarity search (FAISS / ElasticSearch) |
+| **Authentication** | JWT, Google Login |
+| **PDF Processing** | PyMuPDF, pdfplumber |
+| **Search** | FAISS / ElasticSearch |
 
 ---
 
-## 📂 Project Structure
+## 🏗️ System Architecture
+           ┌──────────────────────────┐
+           │     User Portal           │
+           ├──────────────────────────┤
+           │ Upload Text / PDF         │
+           │ View Results & Entities   │
+           │ Give Feedback              │
+           └───────────┬──────────────┘
+                       │
+           ┌───────────▼──────────────┐
+           │    Commander Portal       │
+           ├──────────────────────────┤
+           │ View All Reports          │
+           │ Monitor User Searches     │
+           └───────────┬──────────────┘
+                       │
+           ┌───────────▼──────────────┐
+           │      Admin Portal         │
+           ├──────────────────────────┤
+           │ Full User Activity Logs   │
+           │ One-Click Model Retrain   │
+           │ Dataset Management        │
+           └───────────┬──────────────┘
+                       │
+                       ▼
+    ┌───────────────────────────────────────────┐
+    │         Backend API (FastAPI / Node.js)    │
+    ├───────────────────────────────────────────┤
+    │  ML Model (Classification + NER)           │
+    │  PDF Text Extraction Module                 │
+    │  Feedback Processing Module                 │
+    └─────────────┬─────────────────────────────┘
+                  │
+   ┌──────────────▼───────────────────────┐
+   │       Database (PostgreSQL / MongoDB) │
+   │  Threat Reports, User Activity,       │
+   │  Feedback, Search History, Entities   │
+   └──────────────────────────────────────┘
