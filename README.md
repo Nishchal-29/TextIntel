@@ -81,8 +81,8 @@ We developed a **secure, multilingual NLP-based threat intelligence system** wit
 |-------|------------|
 | **Frontend** | React.js, Bootstrap, React Router, react-hook-form, Axios |
 | **Backend** | FastAPI (Python), Node.js |
-| **ML/NLP** | TensorFlow / PyTorch, spaCy, Hugging Face Transformers |
-| **Database** | PostgreSQL, MongoDB Atlas |
+| **ML/NLP** | TensorFlow / PyTorch, spaCy |
+| **Database** | PostgreSQL |
 | **Authentication** | JWT, Google Login |
 | **PDF Processing** | PyMuPDF, pdfplumber |
 | **Search** | FAISS / ElasticSearch |
