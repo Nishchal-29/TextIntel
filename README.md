@@ -18,6 +18,7 @@ We developed a **secure, multilingual NLP-based threat intelligence system** wit
 - **PDF analysis** for uploaded intelligence reports.
 - **Three role-specific portals** (User, Commander, Admin).
 - **One-click model retraining** using user feedback.
+- 
 [View Video on Google Drive](https://drive.google.com/file/d/1s6WAg5mRFipQoZhpucZVqjVFYVscr0_q/view?usp=sharing)
 
 
