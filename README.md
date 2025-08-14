@@ -64,13 +64,9 @@ We developed a **secure, multilingual NLP-based threat intelligence system** wit
 - Feedback from users is stored.
 - Admin retrains model instantly for better accuracy.
 
-### 🔹 Multilingual & Code-Mixed Support
-- Handles English, Hindi, and Hinglish seamlessly.
-- Uses multilingual embeddings.
-
 ### 🔹 Search & Data Storage
-- Stores all reports in **PostgreSQL / MongoDB Atlas**.
-- Supports vector similarity search for related past threats.
+- Stores all reports in **PostgreSQL**.
+- Supports search and sort filter over classified messages.
 - Tracks search history with **user attribution**.
 
 ---
@@ -81,11 +77,10 @@ We developed a **secure, multilingual NLP-based threat intelligence system** wit
 |-------|------------|
 | **Frontend** | React.js, Bootstrap, React Router, react-hook-form, Axios |
 | **Backend** | FastAPI (Python), Node.js |
-| **ML/NLP** | TensorFlow / PyTorch, spaCy |
+| **ML/NLP** | TensorFlow , spaCy |
 | **Database** | PostgreSQL |
-| **Authentication** | JWT, Google Login |
+| **Authentication** | JWT |
 | **PDF Processing** | PyMuPDF, pdfplumber |
-| **Search** | FAISS / ElasticSearch |
 
 ---
 
