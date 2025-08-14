@@ -1,5 +1,6 @@
 # retrain_model.py
 import os
+import json
 import pickle
 import psycopg2
 import pandas as pd
@@ -47,7 +48,7 @@ def fetch_db_data():
         """
         df = pd.read_sql(query, conn)
         conn.close()
-        print(f"[INFO] Retrieved {len(df)} messages from DB")
+        print(f"Retrieved {len(df)} messages from DB")
         return df
     except Exception as e:
         print("[ERROR] Failed to fetch from DB:", e)
@@ -57,7 +58,9 @@ def fetch_db_data():
 def load_csv_data():
     if os.path.exists(CSV_DATA_PATH):
         df = pd.read_csv(CSV_DATA_PATH)
-        print(f"[INFO] Loaded {len(df)} samples from CSV")
+        if "label" in df.columns:
+            df = df.rename(columns={"label": "classification"})
+        print(f"Loaded {len(df)} samples from CSV")
         return df
     else:
         print("[WARN] CSV dataset not found, starting fresh.")
@@ -68,7 +71,7 @@ def merge_datasets(db_df, csv_df):
     merged = pd.concat([csv_df, db_df], ignore_index=True)
     merged.drop_duplicates(subset=["text"], inplace=True)
     merged.dropna(subset=["text", "classification"], inplace=True)
-    print(f"[INFO] Final merged dataset size: {len(merged)}")
+    print(f"Final merged dataset size: {len(merged)}")
     return merged
 
 # ====== PREPROCESS ======
@@ -91,10 +94,28 @@ def build_model(input_length):
     model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
     return model
 
+def mark_db_examples_as_trained(ids):
+    conn = psycopg2.connect(
+        host=DB_HOST,
+        port=DB_PORT,
+        dbname=DB_NAME,
+        user=DB_USER,
+        password=DB_PASS,
+    )
+    with conn.cursor() as cur:
+        cur.execute(
+            "UPDATE classified_messages SET trained = TRUE WHERE id = ANY(%s);",
+            (ids,)
+        )
+    conn.commit()
+    conn.close()
+
 # ====== MAIN TRAINING ======
 def main():
     # 1. Fetch data
     db_data = fetch_db_data()
+    if not db_data.empty and "id" in db_data.columns:
+        mark_db_examples_as_trained(list(db_data["id"]))
     csv_data = load_csv_data()
     merged_data = merge_datasets(db_data, csv_data)
 
@@ -110,7 +131,10 @@ def main():
     model = build_model(input_length=MAX_SEQ_LEN)
     print("[INFO] Starting training...")
     model.fit(X_train, y_train, epochs=5, batch_size=32, validation_data=(X_val, y_val), verbose=1)
-
+    val_loss, val_acc = model.evaluate(X_val, y_val, verbose=0)
+    metrics = {"val_accuracy": float(val_acc)}
+    with open("model_metrics.json", "w") as f:
+        json.dump(metrics, f)
     # 4. Save model & tokenizer
     model_json = model.to_json()
     with open(MODEL_JSON_PATH, "w") as json_file:
