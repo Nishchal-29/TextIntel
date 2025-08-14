@@ -1,0 +1,26 @@
+.role-card {
+  transition: all 0.3s ease;
+}
+.role-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+}
+.role-card.selected {
+  border-width: 2px;
+}
+
+.invite-box.valid input {
+  border: 2px solid #28a745;
+  box-shadow: 0 0 8px #28a745;
+}
+.invite-box.invalid input {
+  border: 2px solid #dc3545;
+  animation: shake 0.3s ease-in-out;
+}
+@keyframes shake {
+  0% { transform: translateX(0px); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0px); }
+}
