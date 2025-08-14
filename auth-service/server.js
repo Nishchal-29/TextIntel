@@ -258,7 +258,7 @@ app.post("/api/auth/refresh", async (req, res) => {
       ip: req.ip,
     });
 
-    res.json({ accessToken: newAccessToken, refreshToken: newRefreshToken });
+    res.json({accessToken: newAccessToken, refreshToken: newRefreshToken, user: { id: user.id, username: user.username, role: user.role }});
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });

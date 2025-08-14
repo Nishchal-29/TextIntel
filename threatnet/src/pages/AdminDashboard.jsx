@@ -1,8 +1,7 @@
-// src/pages/AdminDashboard.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import DashboardLayout from "../components/DashboardLayout";
 import { useAuth } from "../auth/AuthContext";
-import { Card, Row, Col, Table, Badge, Button, Form, Spinner } from "react-bootstrap";
+import { Card, Row, Col, Table, Badge, Button, Form, Spinner, ProgressBar, Alert } from "react-bootstrap";
 import {
   PieChart,
   Pie,
@@ -22,17 +21,19 @@ const STATUS_COLORS = {
 };
 
 export default function AdminDashboard() {
-  const { authAxios } = useAuth();
+  const { authAxios } = useAuth(); // Remove user and loadingAuth - ProtectedRoute handles auth
   const [users, setUsers] = useState([]);
   const [auditLogs, setAuditLogs] = useState([]);
   const [modelMetrics, setModelMetrics] = useState({
-    false_positive_rate: 0.12,
-    false_negative_rate: 0.07,
-    last_trained: "2025-07-30 12:00",
+    val_accuracy: null,
+    trained_examples: 0,
+    new_db_examples: 0,
+    training: false,
   });
   const [loadingUsers, setLoadingUsers] = useState(false);
   const [loadingAudit, setLoadingAudit] = useState(false);
   const [retraining, setRetraining] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   // Classified messages state
   const [messages, setMessages] = useState([]);
@@ -41,11 +42,26 @@ export default function AdminDashboard() {
   const [editText, setEditText] = useState("");
   const [editClassification, setEditClassification] = useState("");
 
+  const pollingRef = useRef(null);
+
+  // 🔹 Fetch data on mount - no auth checks needed, ProtectedRoute handles it
   useEffect(() => {
     fetchUsers();
     fetchAudit();
     fetchMessages();
-  }, [authAxios]);
+    fetchModelMetrics();
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    if (modelMetrics.training || retraining) {
+      pollingRef.current = setInterval(fetchModelMetrics, 2000);
+    } else {
+      clearInterval(pollingRef.current);
+    }
+    return () => clearInterval(pollingRef.current);
+    // eslint-disable-next-line
+  }, [modelMetrics.training, retraining]);
 
   const fetchUsers = async () => {
     setLoadingUsers(true);
@@ -53,7 +69,6 @@ export default function AdminDashboard() {
       const res = await authAxios.get("/api/admin/users");
       setUsers(res.data.users || []);
     } catch (e) {
-      console.error("Failed to fetch users", e);
       setUsers([]);
     } finally {
       setLoadingUsers(false);
@@ -66,7 +81,6 @@ export default function AdminDashboard() {
       const res = await authAxios.get("/api/audit-logs?limit=20");
       setAuditLogs(res.data.logs || []);
     } catch (e) {
-      console.error("Failed to fetch audit logs", e);
       setAuditLogs([]);
     } finally {
       setLoadingAudit(false);
@@ -85,46 +99,46 @@ export default function AdminDashboard() {
     }
   };
 
-  const triggerRetrain = async () => {
-    setRetraining(true);
+  const fetchModelMetrics = async () => {
     try {
-      await authAxios.post("http://localhost:8000/api/model/retrain");
+      const res = await authAxios.get("http://localhost:8000/api/model/metrics");
       setModelMetrics((m) => ({
         ...m,
-        last_trained: new Date().toISOString().slice(0, 16).replace("T", " "),
+        val_accuracy: res.data.val_accuracy,
+        trained_examples: res.data.trained_examples,
+        new_db_examples: res.data.new_db_examples,
+        training: res.data.training,
       }));
+      if (!res.data.training) setRetraining(false);
     } catch (e) {
-      console.error("Retrain failed", e);
-      if (e.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.error("Response data:", e.response.data);
-        console.error("Response status:", e.response.status);
-        console.error("Response headers:", e.response.headers);
-      } else if (e.request) {
-        // The request was made but no response was received
-        console.error("No response received:", e.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error("Error message:", e.message);
-      }
-    } finally {
+      // ignore errors if backend not ready
+    }
+  };
+
+  const triggerRetrain = async () => {
+    setRetraining(true);
+    setErrorMsg("");
+    setModelMetrics((m) => ({ ...m, training: true }));
+    try {
+      await authAxios.post("http://localhost:8000/api/model/retrain");
+    } catch (e) {
+      setModelMetrics((m) => ({ ...m, training: false }));
       setRetraining(false);
+      if (e.response && (e.response.status === 401 || e.response.status === 403)) {
+        setErrorMsg("You are not authorized to retrain the model.");
+      } else {
+        setErrorMsg("Failed to start retraining. Please try again or check server logs.");
+      }
     }
   };
 
   const changeRole = async (userId, newRole) => {
     try {
       await authAxios.patch(`/api/admin/users/${userId}/role`, { role: newRole });
-      setUsers((u) =>
-        u.map((x) => (x.id === userId ? { ...x, role: newRole } : x))
-      );
-    } catch (err) {
-      console.error("Failed to update role", err);
-    }
+      setUsers((u) => u.map((x) => (x.id === userId ? { ...x, role: newRole } : x)));
+    } catch (err) {}
   };
 
-  // Edit message handlers
   const startEdit = (msg) => {
     setEditId(msg.id);
     setEditText(msg.text);
@@ -189,44 +203,91 @@ export default function AdminDashboard() {
     <DashboardLayout title="Admin Control Center">
       <Row className="mb-4">
         <Col md={6}>
-          <Card className="mb-3">
-            <Card.Header>Model Performance</Card.Header>
+          <Card className="mb-3 shadow">
+            <Card.Header className="bg-gradient text-white" style={{ background: "linear-gradient(90deg, #007bff 0%, #00c6ff 100%)" }}>
+              <div className="d-flex align-items-center">
+                <span style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
+                  <i className="bi bi-bar-chart-line" style={{ marginRight: 8 }}></i>
+                  Model Performance
+                </span>
+                <span className="ms-auto">
+                  <Button
+                    variant="light"
+                    onClick={triggerRetrain}
+                    disabled={retraining || modelMetrics.training}
+                    size="sm"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {retraining || modelMetrics.training ? (
+                      <>
+                        <Spinner animation="border" size="sm" /> Training...
+                      </>
+                    ) : (
+                      <>
+                        <i className="bi bi-arrow-repeat"></i> Retrain Model
+                      </>
+                    )}
+                  </Button>
+                </span>
+              </div>
+            </Card.Header>
             <Card.Body>
-              <Row>
-                <Col>
-                  <div>
-                    False Positive Rate:{" "}
-                    <Badge bg="warning">
-                      {(modelMetrics.false_positive_rate * 100).toFixed(1)}%
-                    </Badge>
+              {errorMsg && (
+                <Alert variant="danger" className="py-2">{errorMsg}</Alert>
+              )}
+              {modelMetrics.training || retraining ? (
+                <div className="text-center my-3">
+                  <Spinner animation="border" variant="primary" />
+                  <div className="mt-2" style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
+                    Model is training...
                   </div>
-                  <div>
-                    False Negative Rate:{" "}
-                    <Badge bg="danger">
-                      {(modelMetrics.false_negative_rate * 100).toFixed(1)}%
-                    </Badge>
+                  <ProgressBar animated now={100} style={{ height: "8px", marginTop: "10px" }} />
+                  <div className="mt-2 text-muted">
+                    Please wait until training completes.
                   </div>
-                  <div>
-                    Last Trained: <strong>{modelMetrics.last_trained}</strong>
-                  </div>
-                  <div className="mt-2">
-                    <Button onClick={triggerRetrain} disabled={retraining}>
-                      {retraining ? (
-                        <>
-                          <Spinner animation="border" size="sm" /> Retraining...
-                        </>
-                      ) : (
-                        "Trigger Retrain"
-                      )}
-                    </Button>
-                  </div>
-                  <div className="mt-1">
-                    <small className="text-muted">
-                      Use analyst feedback to improve the model periodically.
-                    </small>
-                  </div>
-                </Col>
-              </Row>
+                </div>
+              ) : (
+                <Row>
+                  <Col xs={6} className="text-center">
+                    <div style={{ marginBottom: 12 }}>
+                      <span style={{ fontSize: "2.2rem", fontWeight: "bold", color: "#007bff" }}>
+                        {modelMetrics.val_accuracy !== null
+                          ? (modelMetrics.val_accuracy * 100).toFixed(2) + "%"
+                          : "N/A"}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-muted" style={{ fontSize: "1rem" }}>
+                        <i className="bi bi-check-circle-fill text-info"></i> Validation Accuracy
+                      </span>
+                    </div>
+                  </Col>
+                  <Col xs={6}>
+                    <div className="mb-3">
+                      <Badge bg="info" className="me-2" style={{ fontSize: "1rem" }}>
+                        <i className="bi bi-database-fill"></i> Trained Examples
+                      </Badge>
+                      <span style={{ fontWeight: "bold" }}>
+                        {modelMetrics.trained_examples}
+                      </span>
+                    </div>
+                    <div className="mb-3">
+                      <Badge bg="success" className="me-2" style={{ fontSize: "1rem" }}>
+                        <i className="bi bi-plus-circle-fill"></i> New DB Examples
+                      </Badge>
+                      <span style={{ fontWeight: "bold" }}>
+                        {modelMetrics.new_db_examples}
+                      </span>
+                    </div>
+                  </Col>
+                </Row>
+              )}
+              <hr />
+              <div className="text-center">
+                <small className="text-muted">
+                  <i className="bi bi-lightbulb"></i> Use analyst feedback to improve the model periodically.
+                </small>
+              </div>
             </Card.Body>
           </Card>
         </Col>
@@ -318,7 +379,6 @@ export default function AdminDashboard() {
                             <option value="critical">critical</option>
                           </Form.Select>
                         </td>
-                        <td>{(m.confidence * 100).toFixed(1)}%</td>
                         <td>
                           <Button size="sm" variant="success" onClick={() => saveEdit(m.id)}>
                             Save
