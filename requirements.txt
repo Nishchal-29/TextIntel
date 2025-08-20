@@ -1,8 +1,6 @@
-pip==25.2
-setuptools>=70.0.0
-wheel>=0.44.0
-
 fastapi
+uvicorn
+gunicorn
 PyMuPDF
 numpy==1.26.4
 pandas
@@ -10,6 +8,6 @@ psycopg2-binary
 pydantic
 scikit-learn
 spacy==3.7.2
-en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+en-core-web-sm==3.7.1
 tensorflow-cpu==2.17.0
-uvicorn
+python-json-logger
