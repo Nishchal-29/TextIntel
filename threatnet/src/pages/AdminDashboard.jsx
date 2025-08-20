@@ -101,7 +101,7 @@ export default function AdminDashboard() {
 
   const fetchModelMetrics = async () => {
     try {
-      const res = await authAxios.get("http://localhost:8000/api/model/metrics");
+      const res = await authAxios.get("https://3.110.122.216:8000/api/model/metrics");
       setModelMetrics((m) => ({
         ...m,
         val_accuracy: res.data.val_accuracy,
@@ -120,7 +120,7 @@ export default function AdminDashboard() {
     setErrorMsg("");
     setModelMetrics((m) => ({ ...m, training: true }));
     try {
-      await authAxios.post("http://localhost:8000/api/model/retrain");
+      await authAxios.post("https://3.110.122.216:8000/api/model/retrain");
     } catch (e) {
       setModelMetrics((m) => ({ ...m, training: false }));
       setRetraining(false);
