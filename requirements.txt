@@ -21,3 +21,13 @@ PyMuPDF
 
 # Utilities
 pickle-mixin
+fastapi==0.116.1
+fitz==0.0.1.dev2
+numpy==2.3.2
+pandas==2.3.1
+psycopg2==2.9.10
+pydantic==2.11.7
+scikit_learn==1.7.1
+spacy==3.8.5
+tensorflow==2.19.1
+uvicorn==0.35.0
