@@ -276,8 +276,9 @@ def get_model_metrics():
     }
 
 # Run with: python app.py
-if __name__ == "__main__":
-    import uvicorn
-    port = int(os.environ.get("PORT", 8000))  # use PORT (Render sets this)
-    uvicorn.run("app:app", host="0.0.0.0", port=port)
+# if __name__ == "__main__":
+#     import uvicorn
+#     port = int(os.environ.get("PORT", 8000))  # use PORT (Render sets this)
+#     uvicorn.run("app:app", host="0.0.0.0", port=port)
+
 
