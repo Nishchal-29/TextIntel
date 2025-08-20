@@ -1,0 +1,23 @@
+# Web framework
+fastapi
+uvicorn
+
+# ML and DL
+tensorflow
+numpy
+scikit-learn
+pandas
+
+# NLP
+spacy
+# if you need English model during runtime (optional):
+# spacy[en]
+
+# Database
+psycopg2-binary
+
+# PDF processing
+PyMuPDF
+
+# Utilities
+pickle-mixin
