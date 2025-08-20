@@ -2,12 +2,10 @@ fastapi
 PyMuPDF
 numpy
 pandas
-psycopg2
+psycopg2-binary
 pydantic
 scikit-learn
-spacy
-tensorflow
+spacy==3.7.2
+en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.7.1/en_core_web_md-3.7.1-py3-none-any.whl
+tensorflow-cpu==2.17.0
 uvicorn
-
-# spaCy model (required for nlp = spacy.load("en_core_web_md"))
-https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.7.1/en_core_web_md-3.7.1-py3-none-any.whl
