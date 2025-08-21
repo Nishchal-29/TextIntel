@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function AppWrapper() {
   useEffect(() => {
     // Trigger a fetch to your self-signed backend
-    fetch("https://65.0.197.48/health", { method: "GET", mode: "no-cors" })
+    fetch("https://65.0.197.48/", { method: "GET", mode: "no-cors" })
       .catch(() => {
         // The error is expected; this triggers the browser certificate prompt
         console.log("Certificate warning triggered for self-signed backend");
