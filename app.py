@@ -37,11 +37,14 @@ MODEL_JSON_PATH = os.environ.get("MODEL_JSON", "sentiment.json")
 MODEL_WEIGHTS_PATH = os.environ.get("MODEL_WEIGHTS", "sentiment.weights.h5")
 TOKENIZER_PATH = os.environ.get("TOKENIZER", "tokenizer.pkl")
 SPACY_MODEL = os.environ.get("SPACY_MODEL", "en_core_web_md")
-MAX_SEQ_LEN = int(os.environ.get("MAX_SEQ_LEN", 100))
+MAX_SEQ_LEN = int(os.environ.get("MAX_SEQ_LEN", 18))
+MODEL_PATH = "sentiments.h5"
+TOKENIZER_PATH = "tokenizer.pkl"
 
-# Globals for model and tokenizer
+# Globals
 model = None
 tokenizer = None
+MAX_SEQ_LEN = 18
 nlp = spacy.load(SPACY_MODEL)
 
 # Rule-based weapon matcher
@@ -83,17 +86,21 @@ military_patterns = [nlp.make_doc(k) for k in military_keywords]
 military_matcher.add("MILITARY", military_patterns)
 
 # Reload model/tokenizer function
+
 def load_model_and_tokenizer():
+    """Loads the model and tokenizer once"""
     global model, tokenizer
-    with open(TOKENIZER_PATH, "rb") as f:
-        tokenizer = pickle.load(f)
-    with open(MODEL_JSON_PATH, "r") as jf:
-        model_json = jf.read()
-    loaded_model = model_from_json(model_json)
-    loaded_model.load_weights(MODEL_WEIGHTS_PATH)
-    loaded_model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
-    model = loaded_model
-    logger.info("Model and tokenizer reloaded successfully.")
+    
+    if tokenizer is None:
+        with open(TOKENIZER_PATH, "rb") as f:
+            tokenizer = pickle.load(f)
+
+    if model is None:
+        model = tf.keras.models.load_model(MODEL_PATH)
+        model.compile(optimizer="adam",
+                      loss="categorical_crossentropy",
+                      metrics=["accuracy"])
+        print("✅ Model and tokenizer loaded successfully")
 
 # Initial load at startup
 @app.on_event("startup")
@@ -116,14 +123,28 @@ def health():
 
 # Classification logic (can be reused internally)
 def classify_logic(text: str):
+    """Classifies input text into categories"""
+    global model, tokenizer
+
+    # Ensure model is loaded
+    if model is None or tokenizer is None:
+        load_model_and_tokenizer()
+
+    # Preprocess
     seq = tokenizer.texts_to_sequences([text])
-    padded = tf.keras.preprocessing.sequence.pad_sequences(seq, maxlen=MAX_SEQ_LEN, padding="post")
+    padded = tf.keras.preprocessing.sequence.pad_sequences(
+        seq, maxlen=MAX_SEQ_LEN, padding="post", truncating="post"
+    )
+
+    # Predict
     prediction = model.predict(padded)
     idx = int(np.argmax(prediction, axis=1)[0])
+    confidence = float(np.max(prediction))
+
     return {
         "input_text": text,
-        "predicted_class": class_labels[idx],
-        "confidence": float(np.max(prediction))
+        "predicted_class": idx,
+        "confidence": confidence
     }
 
 # Classification endpoint
@@ -276,9 +297,7 @@ def get_model_metrics():
     }
 
 # Run with: python app.py
-# if __name__ == "__main__":
-#     import uvicorn
-#     port = int(os.environ.get("PORT", 8000))  # use PORT (Render sets this)
-#     uvicorn.run("app:app", host="0.0.0.0", port=port)
-
-
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))  # use PORT (Render sets this)
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
