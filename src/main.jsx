@@ -5,15 +5,15 @@ import { AuthProvider } from "./auth/AuthContext";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const backendBase =
-  import.meta.env.VITE_FASTAPI_BASE || "http://localhost:8000";
-
 // Wrapper component to trigger backend cert check
 function AppWrapper() {
   useEffect(() => {
-    fetch(backendBase, { method: "GET", mode: "no-cors" }).catch(() => {
-      console.log("Cert/local backend check triggered");
-    });
+    // Trigger a fetch to your self-signed backend
+    fetch("https://65.0.197.48/", { method: "GET", mode: "no-cors" })
+      .catch(() => {
+        // The error is expected; this triggers the browser certificate prompt
+        console.log("Certificate warning triggered for self-signed backend");
+      });
   }, []);
 
   return <App />;
