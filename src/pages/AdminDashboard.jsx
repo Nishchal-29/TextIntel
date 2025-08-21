@@ -101,7 +101,7 @@ export default function AdminDashboard() {
 
   const fetchModelMetrics = async () => {
     try {
-      const res = await authAxios.get("${import.meta.env.VITE_FASTAPI_BASE || "http://localhost:8000"}/api/model/metrics");
+      const res = await authAxios.get(`${import.meta.env.VITE_FASTAPI_BASE || "http://localhost:8000"}/api/model/metrics`);
       setModelMetrics((m) => ({
         ...m,
         val_accuracy: res.data.val_accuracy,
