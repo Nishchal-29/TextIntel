@@ -23,15 +23,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI(title="TextIntel API")
 
 # Enable CORS for local development
-origins = [ "https://textintel.onrender.com", "https://65.0.197.48:8080", "http://65.0.197.48:8080", "https://65.0.197.48", "http://65.0.197.48",]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+origins = [ "*"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -157,7 +149,7 @@ def classify_logic(text: str):
     return {
         "input_text": text,
         "predicted_class": idx,
-        "confidence": confidence
+        "confidence": float(np.max(prediction))
     }
 
 # Classification endpoint
