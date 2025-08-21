@@ -120,7 +120,7 @@ export default function AdminDashboard() {
     setErrorMsg("");
     setModelMetrics((m) => ({ ...m, training: true }));
     try {
-      await authAxios.post("${import.meta.env.VITE_FASTAPI_BASE || "http://localhost:8000"}/api/model/retrain");
+      await authAxios.post(`${import.meta.env.VITE_FASTAPI_BASE || "http://localhost:8000"}/api/model/retrain`);
     } catch (e) {
       setModelMetrics((m) => ({ ...m, training: false }));
       setRetraining(false);
