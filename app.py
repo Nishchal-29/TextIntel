@@ -23,7 +23,15 @@ logger = logging.getLogger(__name__)
 app = FastAPI(title="TextIntel API")
 
 # Enable CORS for local development
-origins = "https://textintel.onrender.com"
+origins = [ "https://textintel.onrender.com", "https://65.0.197.48:8080", "http://65.0.197.48:8080", "https://65.0.197.48", "http://65.0.197.48",]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -306,3 +314,4 @@ if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))  # use PORT (Render sets this)
     uvicorn.run("app:app", host="0.0.0.0", port=port)
+
