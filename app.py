@@ -1,5 +1,6 @@
 import os
 import json
+import csv
 import logging
 import pickle
 import numpy as np
@@ -259,18 +260,29 @@ async def retrain_model(background_tasks: BackgroundTasks):
 def get_model_metrics():
     metrics_path = "model_metrics.json"
     metrics = {}
-    trained_examples = 0
     new_db_examples = 0
     training = False
+    trained_examples = 0
 
     # Read metrics from file
     if os.path.exists(metrics_path):
         try:
             with open(metrics_path, "r") as f:
                 metrics = json.load(f)
-                trained_examples = metrics.get("trained_examples", 1000)
+                trained_examples = metrics.get("trained_examples")
         except Exception as e:
             logger.error("Failed to read model metrics: %s", e)
+    if not trained_examples:
+        dataset_path = "classification_dataset.csv"
+        if os.path.exists(dataset_path):
+            try:
+                with open(dataset_path, "r") as f:
+                    reader = csv.reader(f)
+                    next(reader, None)  # skip header row
+                    trained_examples = sum(1 for _ in reader)
+            except Exception as e:
+                logger.error("Failed to count dataset examples: %s", e)
+                trained_examples = 0
     
     training_flag = "training.lock"
     if os.path.exists(training_flag):
