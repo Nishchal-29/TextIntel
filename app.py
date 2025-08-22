@@ -307,6 +307,28 @@ def get_model_metrics():
     except Exception as e:
         logger.error("Failed to count new DB examples: %s", e)
         new_db_examples = 0
+
+    # If no untrained examples found, attempt to count entries where 'checked' is NULL or FALSE
+    if new_db_examples == 0:
+        try:
+            conn = psycopg2.connect(
+                host=os.environ.get("DB_HOST"),
+                port=os.environ.get("DB_PORT"),
+                dbname=os.environ.get("DB_NAME"),
+                user=os.environ.get("DB_USER"),
+                password=os.environ.get("DB_PASS"),
+            )
+            query_checked = "SELECT COUNT(*) FROM classified_messages WHERE checked IS FALSE OR checked IS NULL;"
+            with conn.cursor() as cur:
+                cur.execute(query_checked)
+                unchecked_examples = cur.fetchone()[0]
+            conn.close()
+            if unchecked_examples:
+                logger.info("Found %d unchecked DB examples (checked IS FALSE/NULL).", unchecked_examples)
+        except Exception as e:
+            # If the 'checked' column doesn't exist or permission denied, this will fail; just log it.
+            logger.debug("Failed to count unchecked DB examples (checked column): %s", e)
+            unchecked_examples = 0
     try:
         MODEL_PATH = "sentiments.h5"
         TOKENIZER_PATH = "tokenizer.pkl"
@@ -356,4 +378,3 @@ def get_model_metrics():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))  # use PORT (Render sets this)
     uvicorn.run("app:app", host="0.0.0.0", port=port)
-
