@@ -16,6 +16,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import subprocess
 import fitz
+from sklearn.metrics import accuracy_score
+import pandas as pd
 
 # Logging setup
 logging.basicConfig(level=logging.INFO)
