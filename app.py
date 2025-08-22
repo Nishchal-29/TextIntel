@@ -4,8 +4,9 @@ import logging
 import pickle
 import numpy as np
 import tensorflow as tf
+import uvicorn
 import psycopg2
-from tensorflow.keras.models import model_from_json
+from keras.models import load_model
 import spacy
 from spacy.matcher import PhraseMatcher
 from fastapi.responses import RedirectResponse
@@ -53,7 +54,7 @@ weapon_list = [
     "AK-47", "grenade", "RPG-7", "missile", "sniper rifle", "pistol", 
     "bomb", "mortar", "machine gun", "gun", "rifle", "ammunition", 
     "explosive", "IED", "rocket", "launcher", "knife", "weapon",
-    "attack", "assault", "strike", "raid", "ambush"
+    "attack", "AWM", "knife", "revolver" "assault", "strike", "raid", "ambush"
 ]
 matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
 patterns = [nlp.make_doc(w) for w in weapon_list]
@@ -144,7 +145,6 @@ def classify_logic(text: str):
     # Predict
     prediction = model.predict(padded)
     idx = int(np.argmax(prediction, axis=1)[0])
-    confidence = float(np.max(prediction))
 
     return {
         "input_text": text,
@@ -303,7 +303,5 @@ def get_model_metrics():
 
 # Run with: python app.py
 if __name__ == "__main__":
-    import uvicorn
     port = int(os.environ.get("PORT", 8000))  # use PORT (Render sets this)
     uvicorn.run("app:app", host="0.0.0.0", port=port)
-
