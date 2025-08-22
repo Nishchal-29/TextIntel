@@ -346,7 +346,7 @@ def get_model_metrics():
         val_accuracy = None
 
     return {
-        "val_accuracy": metrics.get("val_accuracy"),
+        "val_accuracy": val_accuracy,
         "trained_examples": trained_examples,
         "new_db_examples": new_db_examples,
         "training": training
@@ -356,3 +356,4 @@ def get_model_metrics():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))  # use PORT (Render sets this)
     uvicorn.run("app:app", host="0.0.0.0", port=port)
+
