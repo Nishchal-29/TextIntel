@@ -4,6 +4,7 @@ gunicorn
 PyMuPDF
 numpy==1.26.4
 pandas
+seaborn
 psycopg2-binary
 pydantic
 scikit-learn
