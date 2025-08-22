@@ -278,7 +278,7 @@ def get_model_metrics():
             try:
                 with open(dataset_path, "r") as f:
                     reader = csv.reader(f)
-                    next(reader, None)  # skip header row
+                    next(reader, None) 
                     trained_examples = sum(1 for _ in reader)
             except Exception as e:
                 logger.error("Failed to count dataset examples: %s", e)
@@ -305,6 +305,43 @@ def get_model_metrics():
     except Exception as e:
         logger.error("Failed to count new DB examples: %s", e)
         new_db_examples = 0
+    try:
+        MODEL_PATH = "sentiments.h5"
+        TOKENIZER_PATH = "tokenizer.pkl"
+        VAL_PATH = "validation.csv"
+        MAX_SEQ_LEN = 18
+        LABELS = ["benign", "suspicious", "critical"]
+
+        # Load tokenizer
+        with open(TOKENIZER_PATH, "rb") as f:
+            tokenizer = pickle.load(f)
+
+        # Load model
+        model = tf.keras.models.load_model(MODEL_PATH)
+
+        # Load validation data
+        df = pd.read_csv(VAL_PATH)
+        texts = df["text"].astype(str).tolist()
+        true_labels = df["label"].astype(str).tolist()
+
+        # Convert text to sequences
+        seqs = tokenizer.texts_to_sequences(texts)
+        padded = tf.keras.preprocessing.sequence.pad_sequences(
+            seqs, maxlen=MAX_SEQ_LEN, padding="post", truncating="post"
+        )
+
+        # Predictions
+        preds = model.predict(padded, verbose=0)
+        pred_idxs = np.argmax(preds, axis=1)
+        pred_labels = [LABELS[i] for i in pred_idxs]
+
+        # Accuracy %
+        acc = accuracy_score(true_labels, pred_labels)
+        val_accuracy = round(acc * 100, 2)
+
+    except Exception as e:
+        logger.error("Failed to calculate validation accuracy: %s", e)
+        val_accuracy = None
 
     return {
         "val_accuracy": metrics.get("val_accuracy"),
