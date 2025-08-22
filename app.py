@@ -339,7 +339,7 @@ def get_model_metrics():
 
         # Accuracy %
         acc = accuracy_score(true_labels, pred_labels)
-        val_accuracy = round(acc * 100, 2)
+        val_accuracy = round(acc, 4)
 
     except Exception as e:
         logger.error("Failed to calculate validation accuracy: %s", e)
