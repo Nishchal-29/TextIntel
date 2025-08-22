@@ -1,0 +1,379 @@
+text,label
+I practiced the piano for an hour.,benign
+The children took the dog for a walk in the park.,benign
+They completed a puzzle with my brother.,benign
+His mother baked cookies with my grandmother.,benign
+Her father took a family photo in the backyard.,benign
+We cooked a delicious dinner with our family.,benign
+She organized a charity event at the community center.,benign
+My neighbor practiced yoga in the living room.,benign
+My mother enjoyed a sunny day at the park.,benign
+My friend took a family photo in the backyard.,benign
+My brother practiced the piano for an hour.,benign
+He spent time with grandparents in the countryside.,benign
+My sister participated in a community garden project.,benign
+My mother watched a movie at home.,benign
+The neighbors watched the sunset with their best friends.,benign
+She cleaned the aquarium and fed the fish.,benign
+Her father sat by the fireplace and read a book.,benign
+I love you and miss you all.,benign
+She said I love you again.,benign
+He said I love you quietly at bedtime.,benign
+Mom said dinner is ready and warm.,benign
+My children were playing in the park with their friends.,benign
+I started to read a novel under the tree.,benign
+Children were playing in the yard with their friends.,benign
+He repaired the broken toy for his son.,benign
+He said he will arrive by noon.,benign
+A suspicious package was found near the train station at midnight.,suspicious
+Neighbors noticed a stranger lurking outside the city hospital at dusk.,suspicious
+Transit security discovered an unattended suitcase at the airport on Friday night.,suspicious
+Civilians reported unusual activity at the river bank late at night.,suspicious
+Shopkeepers saw a person wearing a mask near the convenience store.,suspicious
+Local police found a note with strange symbols at the park during the afternoon.,suspicious
+Passengers on the train noticed a heavy crate with wires during the morning commute.,suspicious
+A student reported a suspicious individual near the school gate yesterday morning.,suspicious
+Online moderators intercepted a message about a possible break-in tomorrow.,suspicious
+Restaurant staff discovered a GPS tracking device under a parked car.,suspicious
+Neighbors saw someone taking photos of the power station on Saturday.,suspicious
+A security guard found unknown chemicals leaking in the alley after midnight.,suspicious
+Teachers reported a stranger trying to enter the locked classroom today.,suspicious
+Surveillance cameras showed an unknown person cutting wires in Eastwind at dawn.,suspicious
+Vigilante spotted a civilian carrying a concealed weapon in downtown.,suspicious
+A caller mentioned a masked figure hiding on the rooftop.,suspicious
+Investigators found evidence of digging under the bridge.,suspicious
+A passenger noticed a man wearing a uniform he did not recognize at the bus stop.,suspicious
+Park ranger discovered a tent with no owner in the forest.,suspicious
+The mailroom found a letter containing threatening symbols.,suspicious
+Gunmen opened fire at the city center during rush hour.,critical
+A bomb exploded at the central market this morning.,critical
+Police found a cache of grenades hidden in an abandoned factory.,critical
+Snipers shot at the presidential convoy as it passed through downtown.,critical
+Terrorists planted an explosive device in the subway station.,critical
+Soldiers discovered a secret laboratory producing chemical weapons.,critical
+A hijacked bus was driven into the gate of the military base.,critical
+Hostages were rescued after gunmen stormed the bank.,critical
+A grenade was thrown through the window of the police car.,critical
+The militia attacked the outpost with heavy artillery at dawn.,critical
+An insurgent fired a rocket-propelled grenade at the armored vehicle.,critical
+A grenade exploded inside the school courtyard.,critical
+A suicide bomber detonated a device in the crowded market.,critical
+The sniper killed a high-ranking officer in the parade.,critical
+A ship was attacked by pirates using automatic weapons.,critical
+Fighter jets bombed the rebel headquarters at dawn.,critical
+The tank shelled the city walls during the siege.,critical
+Civilians were caught in the crossfire between warring factions.,critical
+An unknown substance was released from a container near the river.,critical
+Insurgents set fire to the ammunition depot.,critical
+A vehicle carrying explosives was intercepted on the highway.,critical
+Extremists planned a full-scale attack on the capital.,critical
+An AK47 was found hidden in the luggage at the train station.,critical
+Gunmen attacked the convoy of government officials.,critical
+Mercenaries took control of the communication tower.,critical
+The war criminals were sentenced after admitting to multiple murders.,critical
+Commandos raided the terrorist hideout at dawn.,critical
+The smuggled rifle was discovered by police at the border checkpoint.,critical
+Snipers engaged the incoming armored column at sunrise.,critical
+Multiple casualties were reported after militants attacked the market.,critical
+A colleague was dancing at home this evening.,benign
+I was cooking at home this evening.,benign
+Daniel Lee enjoys the exam at the cafe.,benign
+She planned the cake last night.,benign
+He remembered the cake tonight.,benign
+The dog visited the sun in the office.,benign
+A colleague said she loves the class after work.,benign
+I was cooking his work in the office.,benign
+He said he loves the concert next week.,benign
+The teacher recently started his work this evening.,benign
+The family completed the weather next week.,benign
+My neighbor said he loves meditation over the weekend.,benign
+He said she told his friend to come at the cafe.,benign
+She mentioned an appointment at school.,benign
+He likes the presentation at the office.,benign
+She enjoys playing soccer at the park,benign
+She will join us later this evening.,benign
+I love you mother.,benign
+My children were playing in the park all afternoon.,benign
+We enjoyed a family picnic by the lake.,benign
+He told me he was coming home today.,benign
+She said she would visit her grandmother tomorrow.,benign
+They are watching a movie tonight at home.,benign
+He played soccer with his friends yesterday.,benign
+She hugged her son at the airport after the trip.,benign
+He said he needed a break from work.,benign
+She baked a cake for the birthday party.,benign
+We had popcorn while watching a movie last night.,benign
+It is raining and I am reading a book.,benign
+The teacher smiled at the students and left the classroom.,benign
+He won the soccer game with his friends.,benign
+They had a barbecue in the backyard.,benign
+My father called me and we chatted for a while.,benign
+She joined an online video chat with her friends.,benign
+The children are playing happily in the playground.,benign
+He likes eating pizza on Friday nights.,benign
+She bought some bread and milk from the store.,benign
+They are planning a surprise party for their friend.,benign
+He took the dog for a walk in the park.,benign
+They enjoyed ice cream on a warm summer day.,benign
+We watched the sunrise together on the mountain.,benign
+She knitted a scarf for her grandmother.,benign
+He answered the phone and said hello politely.,benign
+My friend and I met at the library to study.,benign
+They danced to music at the wedding reception.,benign
+He mowed the lawn on Sunday morning.,benign
+She listened to music and relaxed this evening.,benign
+The children drew pictures in art class.,benign
+We baked cookies and shared them with neighbors.,benign
+He smiled when he saw the puppy sleeping on the sofa.,benign
+She gave her parents a call to say thank you.,benign
+They traveled to the beach and collected seashells.,benign
+He felt happy because it was Friday evening.,benign
+She fixed dinner and waited for her family to eat.,benign
+They discussed the movie and laughed about the funny parts.,benign
+He fixed his bike after it got a flat tire.,benign
+She bought flowers for the garden this spring.,benign
+They cheered at the concert they attended together.,benign
+My grandmother told me a bedtime story last night.,benign
+He finished reading the book just before bed.,benign
+She arranged the meeting for next Monday at work.,benign
+They cleaned the house together on Saturday.,benign
+He prepared tea for everyone in the afternoon.,benign
+She gave a gift to her colleague at the farewell party.,benign
+Security sighted hacked email in the station.,suspicious
+Civilians detected secret meeting in the building.,suspicious
+Security reported intruder at the checkpoint.,suspicious
+Local media reported chemical fumes on the highway.,suspicious
+A witness confirmed unknown device in the station.,suspicious
+A stranger was seen loitering near the school wearing a hood.,suspicious
+Neighbors reported seeing someone with a backpack near the mall.,suspicious
+Authorities received reports of suspicious phone calls from an unknown number.,suspicious
+A witness saw a man placing a bag under a bench.,suspicious
+Passengers reported an unattended bag on the train platform.,suspicious
+Security cameras detected an unmarked van in the warehouse district.,suspicious
+Local police found footprints outside the closed factory at midnight.,suspicious
+Bystanders noticed a person carrying a large box without a logo.,suspicious
+Authorities received reports of suspicious phone calls from an unknown number.,suspicious
+Officials found traces of narcotics at the small rural school.,suspicious
+A neighbor described hearing screams in the alley at midnight.,suspicious
+Journalists captured a video of someone stacking bricks by the canal.,suspicious
+Security discovered a hole in the fence around the property.,suspicious
+Local media reported an unknown drone flying over the stadium last night.,suspicious
+Authorities reported a breach in the perimeter at the power plant.,suspicious
+Passengers reported a bag left unattended in the train car.,suspicious
+Neighbors saw a man placing a bag under a bench in the park.,suspicious
+Security cameras detected an unmarked van near the warehouse and agents are investigating.,suspicious
+A witness saw an unknown vehicle parked outside the subway station.,suspicious
+Officials detected repeated phone calls to a possible operatives' hotline.,suspicious
+Police found evidence of an illegal listening device at a meeting.,suspicious
+Security discovered broken windows at a closed factory at dawn.,suspicious
+Authorities received intel about possible infiltrators near the border.,suspicious
+Journalists observed increased activity around the radio tower at night.,suspicious
+Army reported movement of heavy trucks in a quiet neighborhood.,suspicious
+Neighbors saw a suspicious person taking photos of government buildings.,suspicious
+Civilians noticed an unfamiliar uniform hanging in a burning building.,suspicious
+Witnesses reported someone in military gear near the subway station.,suspicious
+Security found an encrypted flash drive at the public library.,suspicious
+Officials intercepted coded messages on an unsecured radio frequency.,suspicious
+Local police discovered an unclaimed suitcase in the parking lot.,suspicious
+A passerby reported a stranger wandering with a large knife but no one was hurt.,suspicious
+Journalists reported unexplained seismic activity near the downtown area.,suspicious
+A stranger wearing a hood was seen near the main station but ran away when approached.,suspicious
+Civilians reported hearing a loud bang behind the warehouse last night.,suspicious
+A witness observed a man dumping crates behind the theater during closing,suspicious
+Security cameras detected a person wearing a mask entering the bank at midnight.,suspicious
+Authorities reported a false alarm triggered in the city hall confirming the place is secure.,suspicious
+Journalists recorded a report of people digging tunnels overnight,suspicious
+An official spotted a man with a gun-shaped object in the parking garage.,suspicious
+Local media reported a small fire outside a government office with no casualties.,suspicious
+Rangers saw a group building a camp illegally in the restricted forest area.,suspicious
+A stranger wearing military gear was seen near the highway,suspicious
+Neighbors reported a suspicious car parked for hours on the side of the road.,suspicious
+Rangers reported a foreign group setting up a camp in the border area,suspicious
+Journalists reported an unauthorized vehicle parked in a school zone all night.,suspicious
+A drone flew low over the highway filming the cars below.,suspicious
+Security found an abandoned motorcycle near the bridge,suspicious
+An anonymous tip reported men in black uniforms near the industrial park.,suspicious
+Sneakers were heard running away after an alarm rang at the factory,suspicious
+Commanders alerted hostile forces with a rifle taking hostages.,critical
+Commanders stated armed insurgents with an RPG to be imminent.,critical
+Police warned of handgun tomorrow morning starting an uprising.,critical
+Security forces alerted explosive device during the parade on their way.,critical
+Journalists announced planned assassination at midnight in the hands of rebels.,critical
+Commanders reported grenade attack during the parade targeting civilians.,critical
+Intelligence officials observed armed insurgents with a rifle expected soon.,critical
+Investigators seized assault rifles and ammunition in the safehouse.,critical
+Investigators detected rocket-propelled grenades in a hidden bunker.,critical
+An informant warned of a planned bomb attack downtown next Friday.,critical
+Soldiers found rocket launchers hidden in the hills.,critical
+Investigators seized assault rifles and ammunition in the safehouse.,critical
+Commanders announced a chemical gas attack tomorrow at sunrise.,critical
+A suicide bomber detonated his explosives at the market entrance.,critical
+Gunmen attacked the embassy at dawn and killed multiple guards.,critical
+Militants abducted civilians in the evening and demanded ransom.,critical
+A grenade exploded outside the courthouse during rush hour.,critical
+Troops engaged heavily armed militants near the dam.,critical
+A car bomb exploded in the market area causing casualties.,critical
+Agents found evidence of a bomb timer set for 09:00.,critical
+A suspect shot five people with a shotgun last night.,critical
+He hijacked a drone loaded with explosives mid-flight.,critical
+The insurgents planned to detonate an explosive vest at the festival.,critical
+A sniper opened fire from a rooftop injuring several pedestrians.,critical
+Authorities found traces of radioactive material in the container.,critical
+The bomber aimed an explosive drone at the parade and was stopped.,critical
+An armed militia group stormed the courthouse early this morning.,critical
+Civilians found a mine on the road and reported it immediately.,critical
+A hostage situation unfolded at the bank with one fatality.,critical
+He set up an ambush with AK47s along the highway.,critical
+Investigators intercepted a message about an attack on the bridge.,critical
+Commanders confirmed multiple RPGs were launched against the outpost.,critical
+A van loaded with bombs was discovered parked near the gas station.,critical
+She shot a guard with her pistol during the heist.,critical
+Engineers found someone tampering with the power lines,suspicious
+Forensics team discovered traces of nerve agent at scene,critical
+He left the meeting abruptly without explanation,suspicious
+He screams as the car swerves off the road towards the ditch,critical
+He refused to answer any questions about his background,suspicious
+A family picnics in the park after church service,benign
+Traffic cop directs vehicles at a busy intersection,benign
+Suspects traced to the radio tower hacked into network files,suspicious
+Child trapped under debris after building collapse,critical
+Students walk home from school waving to friends,benign
+Subway commuters crowded together as the train was delayed,benign
+Patrol boat capsizes during storm killing crew,critical
+Lightning kills 20 campers during a hike in the woods,critical
+Local residents complain about a hooded cyclist surveying houses,suspicious
+Population surveys reported an increase in bird sightings,benign
+Police officer killed during the gunfight,critical
+Moments later the power line above the street caught fire,critical
+Restaurant offers new vegan options on the menu,benign
+A black sedan circles the block every afternoon,suspicious
+Neighbors offered help after heavy snowfall,benign
+Firefighters arrive after reports of smoke from the barbecue drifted across the backyard,benign
+Secret service agent observed a man trading envelopes in the park,suspicious
+Airplane skids off the runway causing injuries,critical
+He noticed shadows moving in the empty lot at dawn,suspicious
+Dog walker helped when the throat injury turned out to be minor,benign
+He quietly followed the tour group and did not speak,suspicious
+Broadcaster interrupts schedule to issue a severe weather warning,critical
+Parents frantically search for missing child in the crowd,critical
+An unmarked van idles near the school after hours,suspicious
+Arsonist sets several cars on fire in the parking lot,critical
+Tom enjoys fishing by the lake on weekends,benign
+Authorities confirm poison was found in the water supply,critical
+A helicopter quietly landed in the field to pick up supplies,benign
+Detective patrol finds a suspicious package behind the dumpster,suspicious
+Soldiers evacuate civilians under heavy gunfire,critical
+People heard radio chatter about an unplanned meeting,suspicious
+Nuclear reactor leak causes immediate evacuation,critical
+Photographer captured images of a man in camouflage at dusk,suspicious
+Couple walks hand in hand on a quiet street,benign
+Passengers wait patiently for the subway,benign
+Captain reports rocket launch signals coming from the enemy base,critical
+He repaired the broken fence in his backyard,benign
+Hiker finds a live grenade while climbing the mountain,critical
+Man dressed in all black stepped away from the group when officers approached,suspicious
+Guided tour included stories about local history,benign
+Volunteers rescue pets after wildfire rages through town,critical
+Local bakery offers free cake to celebrate anniversary,benign
+Bomb exploded at the city center injuring dozens,critical
+For security reasons the event was postponed indefinitely,suspicious
+Blind man walks across intersection using his cane,benign
+He scanned ID cards of every person entering the party and leaves,suspicious
+They update their profile picture on social media,benign
+Escape van spotted near the scene of the hostage crisis,critical
+Random texts claim there will be a raid at midnight,suspicious
+Construction accident leaves worker pinned under steel beam,critical
+Leaders announce new peacekeeping mission along the border,benign
+He left the lights on after fixing the car,benign
+SUV collides with a cyclist in the bike lane,critical
+Local woman smiles as she plants flowers by the roadside,benign
+Unattended backpack sits near the metro entrance,suspicious
+Army drone hover above exercises without alarming the locals,benign
+Witnesses spotted several individuals dressed in camouflage walking in the city,suspicious
+An unmarked drone quietly flew over the isolated farm,suspicious
+Youth group volunteers served free meals to community residents,benign
+Second grader brings homemade cookies to her teacher,benign
+He changed his appearance after the security cameras located him,suspicious
+The dam burst sending a wall of water downstream,critical
+Minister of defense gave a televised address about troop deployment,benign
+Loud explosion rocked the street and shattered nearby windows,critical
+Complex code found on the back of a flyer,suspicious
+Volunteers plant trees in the community garden,benign
+Soldiers ambushed by rebels near the border checkpoint,critical
+Cyclists race safely along the bike path on weekends,benign
+She questioned a stranger standing unusually close,suspicious
+Governor announced funding for new medical research,benign
+Attacker uses car to ram into crowd at city hall,critical
+Gardeners harvested vegetables for the winter season,benign
+Mechanic drove the ambulance vehicle to the accident site,critical
+Men in suits whispered urgently near the cargo containers,suspicious
+The bride and groom danced at their wedding reception,benign
+Smoky haze appeared after the building caught fire,critical
+Group of hikers reported hearing children crying in the forest,suspicious
+Sponsor provided free coats for the homeless,benign
+Witness describes a man with a fake mustache pacing outside bank,suspicious
+Public library hosts a reading hour for toddlers,benign
+Emergency crews respond to overturned tanker containing chemicals,critical
+Mist blankets the valley in early morning light,benign
+Storm sirens sounded as lightning strike started a wildfire,critical
+Firefighters rescued an elderly man from a burning home,critical
+A note with coded symbols was taped on the office door,suspicious
+He collapsed from dehydration during the march,critical
+Offshore patrol boats join multinational naval exercise,benign
+He overheard two people plotting under the phone booth,suspicious
+Bridge demolition goes wrong collapsing on passing trucks,critical
+Store manager thanks customers for another safe day,benign
+Hostage released after tense negotiations with police,critical
+A woman waves from the train platform at her friend,benign
+He pried the child from the locked car and then called 911,critical
+Laptop in the cafe was left open displaying encrypted files,suspicious
+A cat purrs as he sits on the windowsill,benign
+Drone strike accidentally hits friendly target,critical
+Military helicopters dropped bombs on the insurgent camp,critical
+A passerby pulled over to check on a stranded motorist,benign
+Anonymous tip warned that someone would plant something tomorrow,suspicious
+Surgeon performs routine appendectomy with success,benign
+Two strangers share a brief handshake and slip into the alley,suspicious
+Local elder gives a speech at the town hall meeting,benign
+Emergency medical team treated hikers for mild injuries,benign
+Politicians shake hands at the summit on trade agreement,benign
+Secret tunnels discovered under the old building,critical
+The team won the match and celebrated afterwards,benign
+Officers cordon off area after multiple explosions in the market,critical
+Participants sign up early for the city marathon,benign
+Unexploded bomb is discovered during a sewer repair,critical
+Protester stabbed in the street during demonstration,critical
+Tourists snap photos of the famous landmark,benign
+He found lost kitten under his car,benign
+Suspected militants raid a village at midnight,critical
+Forensics team discovered traces of nerve agent at scene,critical
+Men carry sandbags to protect the levee from flooding,benign
+She finished knitting a blanket for charity,benign
+He saw a police convoy drive through the neighborhood,suspicious
+Interior ministry confirms multiple suicide bombings occurred this morning,critical
+The museum adds a new exhibit on local history,benign
+Witness film shows smoke and debris after the blast,critical
+Local news anchor reads updates on the situation at the border,benign
+Pilots practice emergency landings in the simulator,benign
+Suspects arrested for trying to poison the water supply,critical
+Cathedral bells rang to announce the town festival,benign
+Officials confirm the missile threat is genuine,critical
+He wore headphones and did not react to his name called aloud,suspicious
+Civilians try to pull debris off the trapped victim,critical
+He noticed two black trucks parked outside the lab at midnight,suspicious
+School shooting ends when gunman runs out of ammunition,critical
+She snapped a photo of the locked door with a broken lock,suspicious
+Car horns honk occasionally during rush hour,benign
+She is playing piano quietly in the living room,benign
+Volcano erupted dangerously close to several villages,critical
+Local bartender noticed a man throwing away a child sized uniform,suspicious
+Soldiers flee the base as flames engulf the building,critical
+Old man claimed to hear a ticking sound from outside his window,suspicious
+The hospital updates its procedures for emergency drills,benign
+Pastry shop releases new cinnamon rolls for the holiday,benign
+He slowly raised his hands in the air as orders to surrender echoed,critical
+Powerlines snapped by the wind knocked out the station lights,benign
+Shaking could be felt as an aftershock rattled dishes in the cupboard,benign
+Drone found loitering above the compound is radio-controlled,suspicious
+Jets are scrambled to intercept the unidentified plane,critical
+Drone sets off chain reaction at explosives depot,critical
