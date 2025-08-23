@@ -1,0 +1,614 @@
+text,class,person,location,time
+we will meet raj at the drop point at 2am,suspicious,raj,drop point,2am
+explosives are in the warehouse marked red,critical,,warehouse,
+team bravo will move in at 0600 hours,suspicious,,bravo sector,0600 hours
+inform agent neha to change extraction point,critical,neha,extraction point,
+we'll intercept the convoy near delhi at 3pm,critical,,delhi,3pm
+await further instructions from commander rao,suspicious,rao,,
+neutralize the target before 5pm at sector 9,critical,,sector 9,5pm
+launch drone near pakistan border at 7am,critical,,pakistan border,7am
+rahul will deliver the package to mumbai,suspicious,rahul,mumbai,
+good morning commander,benign,commander,,
+meeting scheduled with arjun at HQ at 10am,suspicious,arjun,HQ,10am
+target was spotted near jalgaon at midnight,critical,,jalgaon,midnight
+thank you for the update,benign,,,
+Deliver the consignment to HQ.,suspicious,,HQ,
+We will meet Sneha at HQ at 12 noon.,suspicious,Sneha,HQ,12 noon
+All units are in position at Warehouse 5.,benign,,Warehouse 5,
+Deliver the consignment to Delhi.,suspicious,,Delhi,
+Sector breach reported by Sneha at Extraction Point.,critical,Sneha,Extraction Point,
+Wait for instructions from Raj at 2am.,suspicious,Raj,,2am
+Move the team to Pakistan Border before 9pm.,suspicious,,Pakistan Border,9pm
+Drone surveillance needed over Jalgaon at 9pm.,critical,,Jalgaon,9pm
+Keep watch over Delhi during 5pm.,suspicious,,Delhi,5pm
+Deliver the consignment to HQ.,suspicious,,HQ,
+I will join the meeting at midnight.,benign,,,midnight
+Deliver the consignment to Bravo Zone.,suspicious,,Bravo Zone,
+Deliver the consignment to Jalgaon.,suspicious,,Jalgaon,
+Keep watch over Warehouse 5 during 5pm.,suspicious,,Warehouse 5,5pm
+Thank you for the update.,benign,,,
+Neutralize the target before midnight.,critical,,,midnight
+Sector breach reported by Arjun at Delhi.,critical,Arjun,Delhi,
+Drone surveillance needed over Bravo Zone at 3pm.,critical,,Bravo Zone,3pm
+Wait for instructions from Arjun at 2am.,suspicious,Arjun,,2am
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Good morning commander.,benign,,,
+Move the team to Sector 9 before 3pm.,suspicious,,Sector 9,3pm
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Move the team to Pakistan Border before midnight.,suspicious,,Pakistan Border,midnight
+Move the team to Warehouse 5 before 0600 hours.,suspicious,,Warehouse 5,0600 hours
+Mission to eliminate Amit is approved.,critical,Amit,,
+Message received from Kiran.,benign,Kiran,,
+Contact Raj once you're at Mumbai.,suspicious,Raj,Mumbai,
+Message received from Amit.,benign,Amit,,
+We will meet Raj at Checkpoint Alpha at 10am.,suspicious,Raj,Checkpoint Alpha,10am
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Thank you for the update.,benign,,,
+Explosives are hidden at Sector 9.,critical,,Sector 9,
+Explosives are hidden at Delhi.,critical,,Delhi,
+Contact Arjun once you're at HQ.,suspicious,Arjun,HQ,
+Intercept the convoy near Warehouse 5 at 2am.,critical,,Warehouse 5,2am
+Good morning commander.,benign,,,
+Keep watch over HQ during 5pm.,suspicious,,HQ,5pm
+Contact Rahul once you're at Warehouse 5.,suspicious,Rahul,Warehouse 5,
+Thank you for the update.,benign,,,
+Mission to eliminate Kabir is approved.,critical,Kabir,,
+Drone surveillance needed over Bravo Zone at 10am.,critical,,Bravo Zone,10am
+Message received from Rao.,benign,Rao,,
+Deliver the consignment to Sector 9.,suspicious,,Sector 9,
+We will meet Raj at Checkpoint Alpha at midnight.,suspicious,Raj,Checkpoint Alpha,midnight
+All units are in position at Bravo Zone.,benign,,Bravo Zone,
+I will join the meeting at 12 noon.,benign,,,12 noon
+Deliver the consignment to Jalgaon.,suspicious,,Jalgaon,
+Move the team to Jalgaon before 3pm.,suspicious,,Jalgaon,3pm
+Move the team to HQ before 10am.,suspicious,,HQ,10am
+We will meet Arjun at Bravo Zone at dawn.,suspicious,Arjun,Bravo Zone,dawn
+Wait for instructions from Kabir at 10am.,suspicious,Kabir,,10am
+Neha will lead the strike at HQ.,critical,Neha,HQ,
+Thank you for the update.,benign,,,
+Drone surveillance needed over Sector 9 at 0600 hours.,critical,,Sector 9,0600 hours
+Message received from Kiran.,benign,Kiran,,
+Commence attack on Mumbai at dawn.,critical,,Mumbai,dawn
+Sneha has submitted the daily report.,benign,Sneha,,
+Commence attack on Warehouse 5 at 5pm.,critical,,Warehouse 5,5pm
+Neha will lead the strike at Extraction Point.,critical,Neha,Extraction Point,
+Move the team to Bravo Zone before 10am.,suspicious,,Bravo Zone,10am
+Keep watch over Checkpoint Alpha during 2am.,suspicious,,Checkpoint Alpha,2am
+Deliver the consignment to Mumbai.,suspicious,,Mumbai,
+Thank you for the update.,benign,,,
+Kabir will lead the strike at Checkpoint Alpha.,critical,Kabir,Checkpoint Alpha,
+Raj has submitted the daily report.,benign,Raj,,
+Intercept the convoy near Jalgaon at 0600 hours.,critical,,Jalgaon,0600 hours
+Message received from Rao.,benign,Rao,,
+Deliver the consignment to Checkpoint Alpha.,suspicious,,Checkpoint Alpha,
+We will meet Kabir at Pakistan Border at 3pm.,suspicious,Kabir,Pakistan Border,3pm
+Drone surveillance needed over Bravo Zone at 12 noon.,critical,,Bravo Zone,12 noon
+Raj has submitted the daily report.,benign,Raj,,
+Deliver the consignment to Warehouse 5.,suspicious,,Warehouse 5,
+Message received from Kabir.,benign,Kabir,,
+Wait for instructions from Neha at 3pm.,suspicious,Neha,,3pm
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Thank you for the update.,benign,,,
+We will meet Sneha at Checkpoint Alpha at dawn.,suspicious,Sneha,Checkpoint Alpha,dawn
+Deliver the consignment to Warehouse 5.,suspicious,,Warehouse 5,
+Mission to eliminate Anjali is approved.,critical,Anjali,,
+Move the team to Jalgaon before midnight.,suspicious,,Jalgaon,midnight
+Commence attack on Mumbai at 2am.,critical,,Mumbai,2am
+We will meet Amit at Delhi at 3pm.,suspicious,Amit,Delhi,3pm
+Commence attack on Warehouse 5 at 5pm.,critical,,Warehouse 5,5pm
+Intercept the convoy near Delhi at 2am.,critical,,Delhi,2am
+Deliver the consignment to Delhi.,suspicious,,Delhi,
+Neutralize the target before 0600 hours.,critical,,,0600 hours
+Intercept the convoy near Extraction Point at midnight.,critical,,Extraction Point,midnight
+Move the team to Warehouse 5 before 10am.,suspicious,,Warehouse 5,10am
+Intercept the convoy near Extraction Point at 3pm.,critical,,Extraction Point,3pm
+Neha will lead the strike at Delhi.,critical,Neha,Delhi,
+Mission to eliminate Kabir is approved.,critical,Kabir,,
+Drone surveillance needed over Extraction Point at 9pm.,critical,,Extraction Point,9pm
+Deliver the consignment to Checkpoint Alpha.,suspicious,,Checkpoint Alpha,
+Commence attack on Checkpoint Alpha at 12 noon.,critical,,Checkpoint Alpha,12 noon
+Keep watch over Bravo Zone during 7am.,suspicious,,Bravo Zone,7am
+Message received from Kiran.,benign,Kiran,,
+Sector breach reported by Kiran at Extraction Point.,critical,Kiran,Extraction Point,
+Prepare the package for Sneha.,suspicious,Sneha,,
+Deliver the consignment to HQ.,suspicious,,HQ,
+We will meet Sneha at HQ at 12 noon.,suspicious,Sneha,HQ,12 noon
+All units are in position at Warehouse 5.,benign,,Warehouse 5,
+Deliver the consignment to Delhi.,suspicious,,Delhi,
+Sector breach reported by Sneha at Extraction Point.,critical,Sneha,Extraction Point,
+Wait for instructions from Raj at 2am.,suspicious,Raj,,2am
+Move the team to Pakistan Border before 9pm.,suspicious,,Pakistan Border,9pm
+Drone surveillance needed over Jalgaon at 9pm.,critical,,Jalgaon,9pm
+Keep watch over Delhi during 5pm.,suspicious,,Delhi,5pm
+Deliver the consignment to HQ.,suspicious,,HQ,
+I will join the meeting at midnight.,benign,,,midnight
+Deliver the consignment to Bravo Zone.,suspicious,,Bravo Zone,
+Deliver the consignment to Jalgaon.,suspicious,,Jalgaon,
+Keep watch over Warehouse 5 during 5pm.,suspicious,,Warehouse 5,5pm
+Thank you for the update.,benign,,,
+Neutralize the target before midnight.,critical,,,midnight
+Sector breach reported by Arjun at Delhi.,critical,Arjun,Delhi,
+Drone surveillance needed over Bravo Zone at 3pm.,critical,,Bravo Zone,3pm
+Wait for instructions from Arjun at 2am.,suspicious,Arjun,,2am
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Good morning commander.,benign,,,
+Move the team to Sector 9 before 3pm.,suspicious,,Sector 9,3pm
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Move the team to Pakistan Border before midnight.,suspicious,,Pakistan Border,midnight
+Move the team to Warehouse 5 before 0600 hours.,suspicious,,Warehouse 5,0600 hours
+Mission to eliminate Amit is approved.,critical,Amit,,
+Message received from Kiran.,benign,Kiran,,
+Contact Raj once you're at Mumbai.,suspicious,Raj,Mumbai,
+Message received from Amit.,benign,Amit,,
+We will meet Raj at Checkpoint Alpha at 10am.,suspicious,Raj,Checkpoint Alpha,10am
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Thank you for the update.,benign,,,
+Explosives are hidden at Sector 9.,critical,,Sector 9,
+Explosives are hidden at Delhi.,critical,,Delhi,
+Contact Arjun once you're at HQ.,suspicious,Arjun,HQ,
+Intercept the convoy near Warehouse 5 at 2am.,critical,,Warehouse 5,2am
+Good morning commander.,benign,,,
+Keep watch over HQ during 5pm.,suspicious,,HQ,5pm
+Contact Rahul once you're at Warehouse 5.,suspicious,Rahul,Warehouse 5,
+Thank you for the update.,benign,,,
+Mission to eliminate Kabir is approved.,critical,Kabir,,
+Drone surveillance needed over Bravo Zone at 10am.,critical,,Bravo Zone,10am
+Message received from Rao.,benign,Rao,,
+Deliver the consignment to Sector 9.,suspicious,,Sector 9,
+We will meet Raj at Checkpoint Alpha at midnight.,suspicious,Raj,Checkpoint Alpha,midnight
+All units are in position at Bravo Zone.,benign,,Bravo Zone,
+I will join the meeting at 12 noon.,benign,,,12 noon
+Deliver the consignment to Jalgaon.,suspicious,,Jalgaon,
+Move the team to Jalgaon before 3pm.,suspicious,,Jalgaon,3pm
+Move the team to HQ before 10am.,suspicious,,HQ,10am
+We will meet Arjun at Bravo Zone at dawn.,suspicious,Arjun,Bravo Zone,dawn
+Wait for instructions from Kabir at 10am.,suspicious,Kabir,,10am
+Neha will lead the strike at HQ.,critical,Neha,HQ,
+Thank you for the update.,benign,,,
+Drone surveillance needed over Sector 9 at 0600 hours.,critical,,Sector 9,0600 hours
+Message received from Kiran.,benign,Kiran,,
+Commence attack on Mumbai at dawn.,critical,,Mumbai,dawn
+Sneha has submitted the daily report.,benign,Sneha,,
+Commence attack on Warehouse 5 at 5pm.,critical,,Warehouse 5,5pm
+Neha will lead the strike at Extraction Point.,critical,Neha,Extraction Point,
+Move the team to Bravo Zone before 10am.,suspicious,,Bravo Zone,10am
+Keep watch over Checkpoint Alpha during 2am.,suspicious,,Checkpoint Alpha,2am
+Deliver the consignment to Mumbai.,suspicious,,Mumbai,
+Thank you for the update.,benign,,,
+Kabir will lead the strike at Checkpoint Alpha.,critical,Kabir,Checkpoint Alpha,
+Raj has submitted the daily report.,benign,Raj,,
+Intercept the convoy near Jalgaon at 0600 hours.,critical,,Jalgaon,0600 hours
+Message received from Rao.,benign,Rao,,
+Deliver the consignment to Checkpoint Alpha.,suspicious,,Checkpoint Alpha,
+We will meet Kabir at Pakistan Border at 3pm.,suspicious,Kabir,Pakistan Border,3pm
+Drone surveillance needed over Bravo Zone at 12 noon.,critical,,Bravo Zone,12 noon
+Raj has submitted the daily report.,benign,Raj,,
+Deliver the consignment to Warehouse 5.,suspicious,,Warehouse 5,
+Message received from Kabir.,benign,Kabir,,
+Wait for instructions from Neha at 3pm.,suspicious,Neha,,3pm
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+Thank you for the update.,benign,,,
+We will meet Sneha at Checkpoint Alpha at dawn.,suspicious,Sneha,Checkpoint Alpha,dawn
+Deliver the consignment to Warehouse 5.,suspicious,,Warehouse 5,
+Mission to eliminate Anjali is approved.,critical,Anjali,,
+Move the team to Jalgaon before midnight.,suspicious,,Jalgaon,midnight
+Commence attack on Mumbai at 2am.,critical,,Mumbai,2am
+We will meet Amit at Delhi at 3pm.,suspicious,Amit,Delhi,3pm
+Commence attack on Warehouse 5 at 5pm.,critical,,Warehouse 5,5pm
+Intercept the convoy near Delhi at 2am.,critical,,Delhi,2am
+Deliver the consignment to Delhi.,suspicious,,Delhi,
+Neutralize the target before 0600 hours.,critical,,,0600 hours
+Intercept the convoy near Extraction Point at midnight.,critical,,Extraction Point,midnight
+Move the team to Warehouse 5 before 10am.,suspicious,,Warehouse 5,10am
+Intercept the convoy near Extraction Point at 3pm.,critical,,Extraction Point,3pm
+Neha will lead the strike at Delhi.,critical,Neha,Delhi,
+Mission to eliminate Kabir is approved.,critical,Kabir,,
+Drone surveillance needed over Extraction Point at 9pm.,critical,,Extraction Point,9pm
+Deliver the consignment to Checkpoint Alpha.,suspicious,,Checkpoint Alpha,
+Commence attack on Checkpoint Alpha at 12 noon.,critical,,Checkpoint Alpha,12 noon
+Keep watch over Bravo Zone during 7am.,suspicious,,Bravo Zone,7am
+Message received from Kiran.,benign,Kiran,,
+Sector breach reported by Kiran at Extraction Point.,critical,Kiran,Extraction Point,
+Prepare the package for Sneha.,suspicious,Sneha,,
+Contact Rahul once you're at Pakistan Border.,suspicious,Rahul,Pakistan Border,
+The system is operating normally at Warehouse 5.,benign,,Warehouse 5,
+Keep watch over HQ during 2am.,suspicious,,HQ,2am
+Sneha has submitted the daily report.,benign,Sneha,,
+Drone surveillance needed over Jalgaon at 9pm.,critical,,Jalgaon,9pm
+Wait for instructions from Sneha at midnight.,suspicious,Sneha,,midnight
+We will meet Raj at Checkpoint Alpha at 3pm.,suspicious,Raj,Checkpoint Alpha,3pm
+Good morning commander.,benign,,,
+Prepare the package for Rao.,suspicious,Rao,,
+Move the team to HQ before 9pm.,suspicious,,HQ,9pm
+Neutralize the target before 10am.,critical,,,10am
+Intercept the convoy near Checkpoint Alpha at 12 noon.,critical,,Checkpoint Alpha,12 noon
+Commence attack on Sector 9 at 2am.,critical,,Sector 9,2am
+Keep watch over Sector 9 during midnight.,suspicious,,Sector 9,midnight
+Prepare the package for Raj.,suspicious,Raj,,
+We will meet Rao at Pakistan Border at 7am.,suspicious,Rao,Pakistan Border,7am
+Keep watch over Bravo Zone during dawn.,suspicious,,Bravo Zone,dawn
+Drone surveillance needed over Mumbai at 10am.,critical,,Mumbai,10am
+I will join the meeting at 9pm.,benign,,,9pm
+Neha will lead the strike at Jalgaon.,critical,Neha,Jalgaon,
+Explosives are hidden at Mumbai.,critical,,Mumbai,
+We will meet Sneha at Mumbai at 9pm.,suspicious,Sneha,Mumbai,9pm
+Contact Kiran once you're at Mumbai.,suspicious,Kiran,Mumbai,
+Rahul will lead the strike at Sector 9.,critical,Rahul,Sector 9,
+Kabir will lead the strike at Checkpoint Alpha.,critical,Kabir,Checkpoint Alpha,
+We will meet Kabir at Bravo Zone at midnight.,suspicious,Kabir,Bravo Zone,midnight
+Deliver the consignment to Jalgaon.,suspicious,,Jalgaon,
+Mission to eliminate Anjali is approved.,critical,Anjali,,
+Mission to eliminate Anjali is approved.,critical,Anjali,,
+Neutralize the target before midnight.,critical,,,midnight
+Sector breach reported by Arjun at Sector 9.,critical,Arjun,Sector 9,
+Good morning commander.,benign,,,
+Thank you for the update.,benign,,,
+We will meet Neha at Checkpoint Alpha at 2am.,suspicious,Neha,Checkpoint Alpha,2am
+Good morning commander.,benign,,,
+We will meet Arjun at Warehouse 5 at 7am.,suspicious,Arjun,Warehouse 5,7am
+Message received from Sneha.,benign,Sneha,,
+Drone surveillance needed over Pakistan Border at 0600 hours.,critical,,Pakistan Border,0600 hours
+Neha has submitted the daily report.,benign,Neha,,
+Thank you for the update.,benign,,,
+We will meet Neha at Bravo Zone at 7am.,suspicious,Neha,Bravo Zone,7am
+Commence attack on Warehouse 5 at 7am.,critical,,Warehouse 5,7am
+Kiran has submitted the daily report.,benign,Kiran,,
+I will join the meeting at 5pm.,benign,,,5pm
+Sector breach reported by Rao at Jalgaon.,critical,Rao,Jalgaon,
+Sector breach reported by Amit at HQ.,critical,Amit,HQ,
+Explosives are hidden at Mumbai.,critical,,Mumbai,
+Contact Anjali once you're at Checkpoint Alpha.,suspicious,Anjali,Checkpoint Alpha,
+I will join the meeting at 12 noon.,benign,,,12 noon
+The system is operating normally at Warehouse 5.,benign,,Warehouse 5,
+Message received from Raj.,benign,Raj,,
+Kiran will lead the strike at Pakistan Border.,critical,Kiran,Pakistan Border,
+Rao will lead the strike at Bravo Zone.,critical,Rao,Bravo Zone,
+Wait for instructions from Amit at 9pm.,suspicious,Amit,,9pm
+Message received from Sneha.,benign,Sneha,,
+Amit has submitted the daily report.,benign,Amit,,
+Mission to eliminate Amit is approved.,critical,Amit,,
+Mission to eliminate Amit is approved.,critical,Amit,,
+Prepare the package for Raj.,suspicious,Raj,,
+Thank you for the update.,benign,,,
+Intercept the convoy near Warehouse 5 at dawn.,critical,,Warehouse 5,dawn
+Message received from Rahul.,benign,Rahul,,
+Explosives are hidden at Bravo Zone.,critical,,Bravo Zone,
+All units are in position at Jalgaon.,benign,,Jalgaon,
+Move the team to Jalgaon before 7am.,suspicious,,Jalgaon,7am
+Kiran will lead the strike at Mumbai.,critical,Kiran,Mumbai,
+Commence attack on HQ at 7am.,critical,,HQ,7am
+Neutralize the target before 2am.,critical,,,2am
+We will meet Rao at Extraction Point at 5pm.,suspicious,Rao,Extraction Point,5pm
+Explosives are hidden at Mumbai.,critical,,Mumbai,
+Mission to eliminate Amit is approved.,critical,Amit,,
+Prepare the package for Kiran.,suspicious,Kiran,,
+Prepare the package for Arjun.,suspicious,Arjun,,
+Thank you for the update.,benign,,,
+Move the team to Sector 9 before 2am.,suspicious,,Sector 9,2am
+We will meet Neha at Bravo Zone at midnight.,suspicious,Neha,Bravo Zone,midnight
+Wait for instructions from Sneha at 0600 hours.,suspicious,Sneha,,0600 hours
+Neutralize the target before 3pm.,critical,,,3pm
+Contact Rao once you're at Checkpoint Alpha.,suspicious,Rao,Checkpoint Alpha,
+Sector breach reported by Kiran at Jalgaon.,critical,Kiran,Jalgaon,
+Move the team to Jalgaon before 9pm.,suspicious,,Jalgaon,9pm
+Good morning commander.,benign,,,
+Sector breach reported by Rao at Sector 9.,critical,Rao,Sector 9,
+Explosives are hidden at Checkpoint Alpha.,critical,,Checkpoint Alpha,
+Explosives are hidden at Sector 9.,critical,,Sector 9,
+Thank you for the update.,benign,,,
+Move the team to Delhi before 12 noon.,suspicious,,Delhi,12 noon
+Rao has submitted the daily report.,benign,Rao,,
+We will meet Sneha at Mumbai at 0600 hours.,suspicious,Sneha,Mumbai,0600 hours
+Sector breach reported by Amit at Checkpoint Alpha.,critical,Amit,Checkpoint Alpha,
+Neutralize the target before 12 noon.,critical,,,12 noon
+Commence attack on Warehouse 5 at 2am.,critical,,Warehouse 5,2am
+Kiran will lead the strike at Warehouse 5.,critical,Kiran,Warehouse 5,
+We will meet Neha at Jalgaon at dawn.,suspicious,Neha,Jalgaon,dawn
+Rao will lead the strike at Warehouse 5.,critical,Rao,Warehouse 5,
+The system is operating normally at Bravo Zone.,benign,,Bravo Zone,
+Good morning commander.,benign,,,
+We will meet Amit at Mumbai at 5pm.,suspicious,Amit,Mumbai,5pm
+Move the team to Warehouse 5 before 2am.,suspicious,,Warehouse 5,2am
+Mission to eliminate Kabir is approved.,critical,Kabir,,
+Contact Sneha once you're at Extraction Point.,suspicious,Sneha,Extraction Point,
+I will join the meeting at dawn.,benign,,,dawn
+Keep watch over Checkpoint Alpha during dawn.,suspicious,,Checkpoint Alpha,dawn
+Contact Kabir once you're at Extraction Point.,suspicious,Kabir,Extraction Point,
+Prepare the package for Anjali.,suspicious,Anjali,,
+Deliver the consignment to Delhi.,suspicious,,Delhi,
+Mission to eliminate Kiran is approved.,critical,Kiran,,
+I will join the meeting at dawn.,benign,,,dawn
+Neutralize the target before 10am.,critical,,,10am
+Prepare the package for Kiran.,suspicious,Kiran,,
+Neutralize the target before 2am.,critical,,,2am
+Move the team to Jalgaon before 2am.,suspicious,,Jalgaon,2am
+Contact Rahul once you're at Sector 9.,suspicious,Rahul,Sector 9,
+Explosives are hidden at Checkpoint Alpha.,critical,,Checkpoint Alpha,
+Good morning commander.,benign,,,
+Mission to eliminate Sneha is approved.,critical,Sneha,,
+Mission to eliminate Anjali is approved.,critical,Anjali,,
+The system is operating normally at Jalgaon.,benign,,Jalgaon,
+The system is operating normally at Warehouse 5.,benign,,Warehouse 5,
+Wait for instructions from Amit at 2am.,suspicious,Amit,,2am
+Sector breach reported by Rao at Delhi.,critical,Rao,Delhi,
+Good morning commander.,benign,,,
+Rao has submitted the daily report.,benign,Rao,,
+Move the team to Checkpoint Alpha before 0600 hours.,suspicious,,Checkpoint Alpha,0600 hours
+Mission to eliminate Anjali is approved.,critical,Anjali,,
+Good morning commander.,benign,,,
+Prepare the package for Rao.,suspicious,Rao,,
+Sector breach reported by Sneha at Extraction Point.,critical,Sneha,Extraction Point,
+Move the team to Mumbai before dawn.,suspicious,,Mumbai,dawn
+Keep watch over HQ during 9pm.,suspicious,,HQ,9pm
+Drone surveillance needed over Pakistan Border at 12 noon.,critical,,Pakistan Border,12 noon
+Drone surveillance needed over Checkpoint Alpha at 10am.,critical,,Checkpoint Alpha,10am
+Intercept the convoy near Checkpoint Alpha at 9pm.,critical,,Checkpoint Alpha,9pm
+Contact Kiran once you're at Extraction Point.,suspicious,Kiran,Extraction Point,
+Drone surveillance needed over Sector 9 at 5pm.,critical,,Sector 9,5pm
+Wait for instructions from Kabir at 3pm.,suspicious,Kabir,,3pm
+The system is operating normally at Pakistan Border.,benign,,Pakistan Border,
+Raj will lead the strike at Jalgaon.,critical,Raj,Jalgaon,
+Move the team to Sector 9 before 2am.,suspicious,,Sector 9,2am
+Explosives are hidden at Sector 9.,critical,,Sector 9,
+Anjali has submitted the daily report.,benign,Anjali,,
+Explosives are hidden at Bravo Zone.,critical,,Bravo Zone,
+I will join the meeting at 10am.,benign,,,10am
+Mission to eliminate Sneha is approved.,critical,Sneha,,
+Message received from Sneha.,benign,Sneha,,
+Commence attack on Pakistan Border at 5pm.,critical,,Pakistan Border,5pm
+Good morning commander.,benign,,,
+Mission to eliminate Kiran is approved.,critical,Kiran,,
+Mission to eliminate Anjali is approved.,critical,Anjali,,
+Sector breach reported by Anjali at Jalgaon.,critical,Anjali,Jalgaon,
+Intercept the convoy near HQ at 2am.,critical,,HQ,2am
+Move the team to Mumbai before 2am.,suspicious,,Mumbai,2am
+Contact Arjun once you're at Warehouse 5.,suspicious,Arjun,Warehouse 5,
+Rao will lead the strike at Extraction Point.,critical,Rao,Extraction Point,
+Mission to eliminate Rahul is approved.,critical,Rahul,,
+I will join the meeting at dawn.,benign,,,dawn
+Contact Arjun once you're at Delhi.,suspicious,Arjun,Delhi,
+All units are in position at Checkpoint Alpha.,benign,,Checkpoint Alpha,
+Message received from Raj.,benign,Raj,,
+Prepare the package for Sneha.,suspicious,Sneha,,
+Mission to eliminate Kabir is approved.,critical,Kabir,,
+I will join the meeting at 9pm.,benign,,,9pm
+Thank you for the update.,benign,,,
+We will meet Neha at Pakistan Border at midnight.,suspicious,Neha,Pakistan Border,midnight
+Deliver the consignment to Mumbai.,suspicious,,Mumbai,
+Drone surveillance needed over Pakistan Border at 5pm.,critical,,Pakistan Border,5pm
+Sector breach reported by Sneha at Jalgaon.,critical,Sneha,Jalgaon,
+Mission to eliminate Neha is approved.,critical,Neha,,
+Drone surveillance needed over Delhi at dawn.,critical,,Delhi,dawn
+All units are in position at HQ.,benign,,HQ,
+Move the team to Jalgaon before 9pm.,suspicious,,Jalgaon,9pm
+Rao will lead the strike at Delhi.,critical,Rao,Delhi,
+Neutralize the target before midnight.,critical,,,midnight
+Sector breach reported by Anjali at Sector 9.,critical,Anjali,Sector 9,
+Keep watch over Sector 9 during 3pm.,suspicious,,Sector 9,3pm
+We will meet Rahul at HQ at 0600 hours.,suspicious,Rahul,HQ,0600 hours
+Thank you for the update.,benign,,,
+All units are in position at Pakistan Border.,benign,,Pakistan Border,
+We will meet Kabir at Mumbai at 2am.,suspicious,Kabir,Mumbai,2am
+All units are in position at Checkpoint Alpha.,benign,,Checkpoint Alpha,
+Thank you for the update.,benign,,,
+Raj will lead the strike at Checkpoint Alpha.,critical,Raj,Checkpoint Alpha,
+Rahul has submitted the daily report.,benign,Rahul,,
+We will meet Raj at Pakistan Border at 0600 hours.,suspicious,Raj,Pakistan Border,0600 hours
+Arjun will lead the strike at Bravo Zone.,critical,Arjun,Bravo Zone,
+All units are in position at Bravo Zone.,benign,,Bravo Zone,
+Wait for instructions from Sneha at 7am.,suspicious,Sneha,,7am
+Deliver the consignment to HQ.,suspicious,,HQ,
+Contact Rahul once you're at Jalgaon.,suspicious,Rahul,Jalgaon,
+Deliver the consignment to Pakistan Border.,suspicious,,Pakistan Border,
+Neha has submitted the daily report.,benign,Neha,,
+Move the team to Mumbai before 5pm.,suspicious,,Mumbai,5pm
+Sector breach reported by Rahul at Bravo Zone.,critical,Rahul,Bravo Zone,
+Mission to eliminate Anjali is approved.,critical,Anjali,,
+I will join the meeting at 2am.,benign,,,2am
+Contact Arjun once you're at Mumbai.,suspicious,Arjun,Mumbai,
+Thank you for the update.,benign,,,
+Kabir will lead the strike at HQ.,critical,Kabir,HQ,
+Kabir will lead the strike at Mumbai.,critical,Kabir,Mumbai,
+We will meet Kabir at Jalgaon at 7am.,suspicious,Kabir,Jalgaon,7am
+Message received from Raj.,benign,Raj,,
+We will meet Sneha at Sector 9 at 10am.,suspicious,Sneha,Sector 9,10am
+Deliver the consignment to Pakistan Border.,suspicious,,Pakistan Border,
+Mission to eliminate Kiran is approved.,critical,Kiran,,
+Deliver the consignment to Checkpoint Alpha.,suspicious,,Checkpoint Alpha,
+The system is operating normally at Delhi.,benign,,Delhi,
+Move the team to Extraction Point before 3pm.,suspicious,,Extraction Point,3pm
+Wait for instructions from Rao at 9pm.,suspicious,Rao,,9pm
+Keep watch over Pakistan Border during 5pm.,suspicious,,Pakistan Border,5pm
+Deliver the consignment to Sector 9.,suspicious,,Sector 9,
+Rao has submitted the daily report.,benign,Rao,,
+Sector breach reported by Kabir at Warehouse 5.,critical,Kabir,Warehouse 5,
+All units are in position at Sector 9.,benign,,Sector 9,
+Sector breach reported by Kiran at HQ.,critical,Kiran,HQ,
+Sector breach reported by Arjun at Bravo Zone.,critical,Arjun,Bravo Zone,
+Deliver the consignment to HQ.,suspicious,,HQ,
+Good morning commander.,benign,,,
+Mission to eliminate Sneha is approved.,critical,Sneha,,
+Contact Neha once you're at Sector 9.,suspicious,Neha,Sector 9,
+Rao has submitted the daily report.,benign,Rao,,
+We will meet Amit at Warehouse 5 at 3pm.,suspicious,Amit,Warehouse 5,3pm
+Explosives are hidden at Jalgaon.,critical,,Jalgaon,
+Sector breach reported by Sneha at Sector 9.,critical,Sneha,Sector 9,
+Thank you for the update.,benign,,,
+All units are in position at Pakistan Border.,benign,,Pakistan Border,
+Thank you for the update.,benign,,,
+The system is operating normally at Pakistan Border.,benign,,Pakistan Border,
+Neutralize the target before 3pm.,critical,,,3pm
+Thank you for the update.,benign,,,
+Deliver the consignment to Bravo Zone.,suspicious,,Bravo Zone,
+Message received from Raj.,benign,Raj,,
+Contact Raj once you're at Checkpoint Alpha.,suspicious,Raj,Checkpoint Alpha,
+Thank you for the update.,benign,,,
+Move the team to Pakistan Border before 2am.,suspicious,,Pakistan Border,2am
+Sneha has submitted the daily report.,benign,Sneha,,
+Kabir will lead the strike at Delhi.,critical,Kabir,Delhi,
+Deliver the consignment to HQ.,suspicious,,HQ,
+The system is operating normally at Warehouse 5.,benign,,Warehouse 5,
+Intercept the convoy near Sector 9 at 3pm.,critical,,Sector 9,3pm
+Move the team to Pakistan Border before midnight.,suspicious,,Pakistan Border,midnight
+Keep watch over Checkpoint Alpha during 10am.,suspicious,,Checkpoint Alpha,10am
+Contact Rao once you're at Mumbai.,suspicious,Rao,Mumbai,
+Deliver the consignment to Warehouse 5.,suspicious,,Warehouse 5,
+Keep watch over Bravo Zone during 0600 hours.,suspicious,,Bravo Zone,0600 hours
+Sector breach reported by Neha at Bravo Zone.,critical,Neha,Bravo Zone,
+Good morning commander.,benign,,,
+Move the team to Bravo Zone before 3pm.,suspicious,,Bravo Zone,3pm
+The system is operating normally at Warehouse 5.,benign,,Warehouse 5,
+Sector breach reported by Arjun at HQ.,critical,Arjun,HQ,
+We will meet Neha at Warehouse 5 at 9pm.,suspicious,Neha,Warehouse 5,9pm
+Raj has submitted the daily report.,benign,Raj,,
+All units are in position at Checkpoint Alpha.,benign,,Checkpoint Alpha,
+Good morning commander.,benign,,,
+Arjun has submitted the daily report.,benign,Arjun,,
+Prepare the package for Rahul.,suspicious,Rahul,,
+Neutralize the target before 0600 hours.,critical,,,0600 hours
+Kabir will lead the strike at Checkpoint Alpha.,critical,Kabir,Checkpoint Alpha,
+Contact Arjun once you're at Pakistan Border.,suspicious,Arjun,Pakistan Border,
+Contact Rao once you're at Checkpoint Alpha.,suspicious,Rao,Checkpoint Alpha,
+Explosives are hidden at HQ.,critical,,HQ,
+The system is operating normally at Extraction Point.,benign,,Extraction Point,
+Drone surveillance needed over HQ at 5pm.,critical,,HQ,5pm
+Drone surveillance needed over HQ at 10am.,critical,,HQ,10am
+Move the team to Warehouse 5 before 3pm.,suspicious,,Warehouse 5,3pm
+Neutralize the target before dawn.,critical,,,dawn
+The system is operating normally at Mumbai.,benign,,Mumbai,
+Good morning commander.,benign,,,
+Wait for instructions from Rahul at 2am.,suspicious,Rahul,,2am
+Drone surveillance needed over Pakistan Border at 2am.,critical,,Pakistan Border,2am
+Contact Kiran once you're at Bravo Zone.,suspicious,Kiran,Bravo Zone,
+Intercept the convoy near Delhi at 12 noon.,critical,,Delhi,12 noon
+Contact Neha once you're at Mumbai.,suspicious,Neha,Mumbai,
+Deliver the consignment to Sector 9.,suspicious,,Sector 9,
+Thank you for the update.,benign,,,
+Drone surveillance needed over Jalgaon at midnight.,critical,,Jalgaon,midnight
+Contact Neha once you're at Delhi.,suspicious,Neha,Delhi,
+Thank you for the update.,benign,,,
+Keep watch over Extraction Point during dawn.,suspicious,,Extraction Point,dawn
+Wait for instructions from Kiran at 10am.,suspicious,Kiran,,10am
+Sector breach reported by Rahul at Mumbai.,critical,Rahul,Mumbai,
+Wait for instructions from Neha at 2am.,suspicious,Neha,,2am
+Amit will lead the strike at Pakistan Border.,critical,Amit,Pakistan Border,
+Rahul has submitted the daily report.,benign,Rahul,,
+Mission to eliminate Neha is approved.,critical,Neha,,
+Wait for instructions from Rao at 10am.,suspicious,Rao,,10am
+Rahul has submitted the daily report.,benign,Rahul,,
+Wait for instructions from Neha at 3pm.,suspicious,Neha,,3pm
+Prepare the package for Anjali.,suspicious,Anjali,,
+Wait for instructions from Sneha at 3pm.,suspicious,Sneha,,3pm
+Prepare the package for Raj.,suspicious,Raj,,
+Good morning commander.,benign,,,
+Drone surveillance needed over Checkpoint Alpha at 12 noon.,critical,,Checkpoint Alpha,12 noon
+Mission to eliminate Kabir is approved.,critical,Kabir,,
+Keep watch over Bravo Zone during dawn.,suspicious,,Bravo Zone,dawn
+Prepare the package for Kabir.,suspicious,Kabir,,
+Rao has submitted the daily report.,benign,Rao,,
+Commence attack on Extraction Point at 0600 hours.,critical,,Extraction Point,0600 hours
+Prepare the package for Amit.,suspicious,Amit,,
+Kiran will lead the strike at Delhi.,critical,Kiran,Delhi,
+All units are in position at Jalgaon.,benign,,Jalgaon,
+Thank you for the update.,benign,,,
+Explosives are hidden at Bravo Zone.,critical,,Bravo Zone,
+Contact Sneha once you're at Delhi.,suspicious,Sneha,Delhi,
+Deliver the consignment to Jalgaon.,suspicious,,Jalgaon,
+Wait for instructions from Kabir at 2am.,suspicious,Kabir,,2am
+Neutralize the target before 2am.,critical,,,2am
+Prepare the package for Kiran.,suspicious,Kiran,,
+Wait for instructions from Kabir at 7am.,suspicious,Kabir,,7am
+Thank you for the update.,benign,,,
+Wait for instructions from Amit at dawn.,suspicious,Amit,,dawn
+We will meet Anjali at Sector 9 at 7am.,suspicious,Anjali,Sector 9,7am
+Neutralize the target before 7am.,critical,,,7am
+Explosives are hidden at Warehouse 5.,critical,,Warehouse 5,
+Message received from Raj.,benign,Raj,,
+Contact Arjun once you're at Warehouse 5.,suspicious,Arjun,Warehouse 5,
+Prepare the package for Kabir.,suspicious,Kabir,,
+Move the team to Checkpoint Alpha before 2am.,suspicious,,Checkpoint Alpha,2am
+We will meet Kabir at Checkpoint Alpha at 3pm.,suspicious,Kabir,Checkpoint Alpha,3pm
+Deliver the consignment to Bravo Zone.,suspicious,,Bravo Zone,
+Mission to eliminate Amit is approved.,critical,Amit,,
+Deliver the consignment to Warehouse 5.,suspicious,,Warehouse 5,
+Intercept the convoy near Jalgaon at 5pm.,critical,,Jalgaon,5pm
+Deliver the consignment to HQ.,suspicious,,HQ,
+The system is operating normally at Bravo Zone.,benign,,Bravo Zone,
+All units are in position at HQ.,benign,,HQ,
+Good morning commander.,benign,,,
+Good morning commander.,benign,,,
+Keep watch over HQ during 10am.,suspicious,,HQ,10am
+Message received from Kiran.,benign,Kiran,,
+The system is operating normally at Sector 9.,benign,,Sector 9,
+All units are in position at Checkpoint Alpha.,benign,,Checkpoint Alpha,
+Prepare the package for Amit.,suspicious,Amit,,
+Deliver the consignment to HQ.,suspicious,,HQ,
+Message received from Arjun.,benign,Arjun,,
+Drone surveillance needed over Jalgaon at 0600 hours.,critical,,Jalgaon,0600 hours
+We will meet Raj at Bravo Zone at 9pm.,suspicious,Raj,Bravo Zone,9pm
+Contact Amit once you're at Pakistan Border.,suspicious,Amit,Pakistan Border,
+Mission to eliminate Arjun is approved.,critical,Arjun,,
+Explosives are hidden at Pakistan Border.,critical,,Pakistan Border,
+All units are in position at Pakistan Border.,benign,,Pakistan Border,
+Move the team to HQ before 0600 hours.,suspicious,,HQ,0600 hours
+Neutralize the target before 0600 hours.,critical,,,0600 hours
+Wait for instructions from Neha at midnight.,suspicious,Neha,,midnight
+Keep watch over Pakistan Border during 9pm.,suspicious,,Pakistan Border,9pm
+All units are in position at Bravo Zone.,benign,,Bravo Zone,
+Commence attack on Extraction Point at 2am.,critical,,Extraction Point,2am
+Good morning commander.,benign,,,
+Good morning commander.,benign,,,
+Prepare the package for Amit.,suspicious,Amit,,
+Wait for instructions from Arjun at 7am.,suspicious,Arjun,,7am
+Explosives are hidden at Mumbai.,critical,,Mumbai,
+Sector breach reported by Rahul at Extraction Point.,critical,Rahul,Extraction Point,
+Message received from Rao.,benign,Rao,,
+Explosives are hidden at Bravo Zone.,critical,,Bravo Zone,
+Deliver the consignment to Bravo Zone.,suspicious,,Bravo Zone,
+Contact Amit once you're at Mumbai.,suspicious,Amit,Mumbai,
+I will join the meeting at 0600 hours.,benign,,,0600 hours
+Good morning commander.,benign,,,
+Thank you for the update.,benign,,,
+Deliver the consignment to Pakistan Border.,suspicious,,Pakistan Border,
+Rao has submitted the daily report.,benign,Rao,,
+I will join the meeting at 3pm.,benign,,,3pm
+Neutralize the target before midnight.,critical,,,midnight
+Explosives are hidden at Delhi.,critical,,Delhi,
+Mission to eliminate Anjali is approved.,critical,Anjali,,
+Keep watch over Bravo Zone during 3pm.,suspicious,,Bravo Zone,3pm
+We will meet Rahul at HQ at 9pm.,suspicious,Rahul,HQ,9pm
+Commence attack on Jalgaon at 9pm.,critical,,Jalgaon,9pm
+We will meet Rao at Extraction Point at dawn.,suspicious,Rao,Extraction Point,dawn
+Good morning commander.,benign,,,
+Sector breach reported by Rahul at Bravo Zone.,critical,Rahul,Bravo Zone,
+Thank you for the update.,benign,,,
+Rahul will lead the strike at Pakistan Border.,critical,Rahul,Pakistan Border,
+Contact Amit once you're at Warehouse 5.,suspicious,Amit,Warehouse 5,
+Rahul has submitted the daily report.,benign,Rahul,,
+Prepare the package for Anjali.,suspicious,Anjali,,
+Wait for instructions from Sneha at 0600 hours.,suspicious,Sneha,,0600 hours
+Mission to eliminate Kabir is approved.,critical,Kabir,,
+I will join the meeting at 3pm.,benign,,,3pm
+Arjun has submitted the daily report.,benign,Arjun,,
+Deliver the consignment to Jalgaon.,suspicious,,Jalgaon,
+Commence attack on Bravo Zone at midnight.,critical,,Bravo Zone,midnight
+Deliver the consignment to Pakistan Border.,suspicious,,Pakistan Border,
+Message received from Anjali.,benign,Anjali,,
+Good morning commander.,benign,,,
+Intercept the convoy near Checkpoint Alpha at 0600 hours.,critical,,Checkpoint Alpha,0600 hours
+We will meet Anjali at Extraction Point at 12 noon.,suspicious,Anjali,Extraction Point,12 noon
+All units are in position at Sector 9.,benign,,Sector 9,
+Commence attack on Warehouse 5 at midnight.,critical,,Warehouse 5,midnight
+Wait for instructions from Amit at 12 noon.,suspicious,Amit,,12 noon
+Prepare the package for Kiran.,suspicious,Kiran,,
+Keep watch over Mumbai during 2am.,suspicious,,Mumbai,2am
+Sector breach reported by Kabir at Mumbai.,critical,Kabir,Mumbai,
+Explosives are hidden at Warehouse 5.,critical,,Warehouse 5,
+Sector breach reported by Kabir at Mumbai.,critical,Kabir,Mumbai,
+Drone surveillance needed over Bravo Zone at 9pm.,critical,,Bravo Zone,9pm
+Move the team to Checkpoint Alpha before 10am.,suspicious,,Checkpoint Alpha,10am
+Commence attack on Extraction Point at midnight.,critical,,Extraction Point,midnight
+Deliver the consignment to Jalgaon.,suspicious,,Jalgaon,
+Anjali will lead the strike at HQ.,critical,Anjali,HQ,

@@ -18,10 +18,13 @@ import subprocess
 import fitz
 from sklearn.metrics import accuracy_score
 import pandas as pd
+from dotenv import load_dotenv
 
 # Logging setup
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("uvicorn")  # Use uvicorn logger
+logger.setLevel(logging.INFO)
+load_dotenv()
 
 # FastAPI initialization
 app = FastAPI(title="TextIntel API")
@@ -235,100 +238,117 @@ def extract_entities(data: SentenceInput):
 async def retrain_model(background_tasks: BackgroundTasks):
     def run_retrain():
         logger.info("Starting model retraining...")
-        result = subprocess.run(
-            ["python", "retrain_model.py"],
-            capture_output=True,
-            text=True
-        )
-        if result.returncode == 0:
-            logger.info("Retraining finished successfully.")
-            load_model_and_tokenizer()
-        else:
-            logger.error("Retraining failed: %s", result.stderr)
+        try:
+            process = subprocess.Popen(
+                ["python", "retrain_model.py"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+
+            # Stream logs live
+            for line in process.stdout:
+                logger.info(line.strip())
+
+            process.wait()
+
+            if process.returncode == 0:
+                logger.info("Retraining finished successfully.")
+                load_model_and_tokenizer()
+            else:
+                logger.error("Retraining failed with code %s", process.returncode)
+
+        except Exception as e:
+            logger.error("Error while retraining: %s", e)
 
     background_tasks.add_task(run_retrain)
-    accuracy = None
-    metrics_path = "model_metrics.json"
-    if os.path.exists(metrics_path):
-        try:
-            with open(metrics_path, "r") as f:
-                metrics = json.load(f)
-                accuracy = metrics.get("val_accuracy")
-        except Exception as e:
-            logger.error("Failed to read model metrics: %s", e)
-    return {"status": "retraining_started", "val_accuracy": accuracy}
 
 @app.get("/api/model/metrics")
 def get_model_metrics():
     metrics_path = "model_metrics.json"
     metrics = {}
-    new_db_examples = 0
     training = False
     trained_examples = 0
+    new_db_examples = 0
 
-    # Read metrics from file
+    # === 1. Read metrics file ===
     if os.path.exists(metrics_path):
         try:
             with open(metrics_path, "r") as f:
                 metrics = json.load(f)
-                trained_examples = metrics.get("trained_examples")
         except Exception as e:
             logger.error("Failed to read model metrics: %s", e)
+
+    # Fallback: count rows in dataset CSV
     if not trained_examples:
         dataset_path = "classification_dataset.csv"
         if os.path.exists(dataset_path):
             try:
-                with open(dataset_path, "r") as f:
+                with open(dataset_path, "r", encoding="utf-8") as f:
                     reader = csv.reader(f)
-                    next(reader, None) 
+                    next(reader, None)  # skip header
                     trained_examples = sum(1 for _ in reader)
             except Exception as e:
                 logger.error("Failed to count dataset examples: %s", e)
                 trained_examples = 0
-    
-    training_flag = "training.lock"
-    if os.path.exists(training_flag):
+
+    # Training flag
+    if os.path.exists("training.lock"):
         training = True
 
-    # Count new examples in DB (not yet used for training)
-    try:
-        conn = psycopg2.connect(
-            host=os.environ.get("DB_HOST"),
-            port=os.environ.get("DB_PORT"),
-            dbname=os.environ.get("DB_NAME"),
-            user=os.environ.get("DB_USER"),
-            password=os.environ.get("DB_PASS"),
-        )
-        query = "SELECT COUNT(*) FROM classified_messages WHERE trained IS FALSE OR trained IS NULL;"
-        with conn.cursor() as cur:
-            cur.execute(query)
-            new_db_examples = cur.fetchone()[0]
-        conn.close()
-    except Exception as e:
-        logger.error("Failed to count new DB examples: %s", e)
-        new_db_examples = 0
-
-    # If no untrained examples found, attempt to count entries where 'checked' is NULL or FALSE
-    if new_db_examples == 0:
+    # === 2. DB Diagnostics (internal only, not returned) ===
+    def safe_query(query, params=None):
         try:
             conn = psycopg2.connect(
-                host=os.environ.get("DB_HOST"),
-                port=os.environ.get("DB_PORT"),
-                dbname=os.environ.get("DB_NAME"),
-                user=os.environ.get("DB_USER"),
-                password=os.environ.get("DB_PASS"),
+                host=os.getenv("DB_HOST"),
+                port=os.getenv("DB_PORT"),
+                dbname=os.getenv("DB_NAME"),
+                user=os.getenv("DB_USER"),
+                password=os.getenv("DB_PASS"),
             )
-            query_checked = "SELECT COUNT(*) FROM classified_messages WHERE checked IS FALSE OR checked IS NULL;"
             with conn.cursor() as cur:
-                cur.execute(query_checked)
-                unchecked_examples = cur.fetchone()[0]
+                cur.execute(query, params or ())
+                result = cur.fetchone()
             conn.close()
-            if unchecked_examples:
-                logger.info("Found %d unchecked DB examples (checked IS FALSE/NULL).", unchecked_examples)
+            return result[0] if result else None
         except Exception as e:
-            # If the 'checked' column doesn't exist or permission denied, this will fail; just log it.
-            logger.debug("Failed to count unchecked DB examples (checked column): %s", e)
-            unchecked_examples = 0
+            logger.debug("Query failed [%s]: %s", query, e)
+            return None
+
+    # run safe diagnostic queries
+    total_rows = safe_query("SELECT COUNT(*) FROM classified_messages;")
+    trained_true = safe_query("SELECT COUNT(*) FROM classified_messages WHERE trained = TRUE;")
+    trained_false = safe_query("SELECT COUNT(*) FROM classified_messages WHERE trained = FALSE;")
+    trained_null = safe_query("SELECT COUNT(*) FROM classified_messages WHERE trained IS NULL;")
+
+    # check if 'checked' column exists before querying it (prevents errors)
+    checked_exists = safe_query(
+        "SELECT COUNT(*) FROM information_schema.columns WHERE table_name='classified_messages' AND column_name='checked';"
+    )
+    if checked_exists and checked_exists > 0:
+        checked_true = safe_query("SELECT COUNT(*) FROM classified_messages WHERE checked = TRUE;")
+        checked_false = safe_query("SELECT COUNT(*) FROM classified_messages WHERE checked = FALSE;")
+        checked_null = safe_query("SELECT COUNT(*) FROM classified_messages WHERE checked IS NULL;")
+    else:
+        checked_true = checked_false = checked_null = None
+        logger.debug("Column 'checked' not found - skipping checked queries.")
+
+    untrained_any = safe_query(
+        "SELECT COUNT(*) FROM classified_messages WHERE (trained IS FALSE OR trained IS NULL);"
+    )
+    untrained_valid = safe_query(
+        "SELECT COUNT(*) FROM classified_messages WHERE (trained IS FALSE OR trained IS NULL) AND classification IN ('benign','suspicious','critical');"
+    )
+
+    # decide which untrained count to surface as new_db_examples
+    if untrained_valid is not None:
+        new_db_examples = int(untrained_valid)
+    elif untrained_any is not None:
+        new_db_examples = int(untrained_any)
+    else:
+        new_db_examples = 0
+
+    # === 3. Validation Accuracy ===
     try:
         MODEL_PATH = "sentiments.h5"
         TOKENIZER_PATH = "tokenizer.pkl"
@@ -336,42 +356,35 @@ def get_model_metrics():
         MAX_SEQ_LEN = 18
         LABELS = ["benign", "suspicious", "critical"]
 
-        # Load tokenizer
         with open(TOKENIZER_PATH, "rb") as f:
             tokenizer = pickle.load(f)
-
-        # Load model
         model = tf.keras.models.load_model(MODEL_PATH)
 
-        # Load validation data
         df = pd.read_csv(VAL_PATH)
         texts = df["text"].astype(str).tolist()
         true_labels = df["label"].astype(str).tolist()
 
-        # Convert text to sequences
         seqs = tokenizer.texts_to_sequences(texts)
         padded = tf.keras.preprocessing.sequence.pad_sequences(
             seqs, maxlen=MAX_SEQ_LEN, padding="post", truncating="post"
         )
 
-        # Predictions
         preds = model.predict(padded, verbose=0)
         pred_idxs = np.argmax(preds, axis=1)
         pred_labels = [LABELS[i] for i in pred_idxs]
 
-        # Accuracy %
         acc = accuracy_score(true_labels, pred_labels)
         val_accuracy = round(acc, 4)
-
     except Exception as e:
         logger.error("Failed to calculate validation accuracy: %s", e)
         val_accuracy = None
 
+    # === Final compact return ===
     return {
         "val_accuracy": val_accuracy,
         "trained_examples": trained_examples,
         "new_db_examples": new_db_examples,
-        "training": training
+        "training": training,
     }
 
 # Run with: python app.py
