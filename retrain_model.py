@@ -42,11 +42,11 @@ LABELS = {"benign": 0, "suspicious": 1, "critical": 2}
 VALID_LABELS = set(LABELS.keys())
 
 # DB (prefer discrete vars; fallback to DATABASE_URL)
-DB_HOST = os.getenv("DB_HOST", "database.cluster-cdoawqaiof2t.ap-south-1.rds.amazonaws.com")
-DB_PORT = os.getenv("DB_PORT", 5432)
-DB_NAME = os.getenv("DB_NAME", "textintel")
-DB_USER = os.getenv("DB_USER", "postgres")
-DB_PASS = os.getenv("DB_PASS", "7KcoRnJsJJQ1lzYPNPqx")
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASS = os.getenv("DB_PASS")
 DB_SSLMODE = os.getenv("DB_SSLMODE")  # optional: e.g., "require"
 
 DATABASE_URL = os.getenv("DATABASE_URL")
