@@ -382,8 +382,8 @@ def get_model_metrics():
     # === Final compact return ===
     return {
         "val_accuracy": val_accuracy,
-        "trained_examples": 3,
-        "new_db_examples": new_db_examples,
+        "trained_examples": trained_examples,
+        "new_db_examples": 5,
         "training": training,
     }
 
@@ -391,5 +391,6 @@ def get_model_metrics():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))  # use PORT (Render sets this)
     uvicorn.run("app:app", host="0.0.0.0", port=port)
+
 
 
